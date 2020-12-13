@@ -10,6 +10,17 @@
       <option name="MARKDOWN" value="true"/>
     </context>
   </template>
+  <template name="log.info"
+            value="$METHODNAME$"
+            description="Include method name"
+            toReformat="false"
+            toShortenFQNames="false">
+    <variable name="METHODNAME" expression="concat(&quot;Hello&quot;, methodName())" defaultValue="blah" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA" value="true" />
+    </context>
+
+  </template>
   <template name="mc"
             value="$TITLE$"
             description="SDK: Convert to title case"

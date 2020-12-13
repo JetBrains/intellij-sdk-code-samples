@@ -34,6 +34,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <defaultLiveTemplates file="/liveTemplates/Markdown.xml"/>
     <liveTemplateContext implementation="org.intellij.sdk.liveTemplates.MarkdownContext"/>
+    <liveTemplateContext implementation="org.intellij.sdk.liveTemplates.JavaContext" />
     <liveTemplateMacro implementation="org.intellij.sdk.liveTemplates.TitleCaseMacro"/>
   </extensions>
 
