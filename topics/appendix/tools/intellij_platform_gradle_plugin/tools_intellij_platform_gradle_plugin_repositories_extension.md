@@ -166,6 +166,9 @@ repositories {
         name = "Authorization"
         value = "Automation amFrdWJfdGVzdDotX...MkV2UkFwekFWTnNwZjA="
       }
+      authentication {
+        create<HttpHeaderAuthentication>("header")
+      }
     }
   }
 }
@@ -183,6 +186,9 @@ repositories {
       repository.credentials(HttpHeaderCredentials) {
         name = 'Authorization'
         value = 'Automation amFrdWJfdGVzdDotX...MkV2UkFwekFWTnNwZjA='
+      }
+      authentication {
+        create<HttpHeaderAuthentication>("header")
       }
     }
   }
