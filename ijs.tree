@@ -415,6 +415,7 @@
     <toc-element topic="verifying_plugin_compatibility.md"/>
     <toc-element topic="api_changes_list.md" toc-title="Incompatible API Changes"
                  accepts-web-file-names="api-changes-list-2016.html,api-changes-list-2017.html,api-changes-list-2018.html">
+      <toc-element topic="api_changes_list_2026.md" toc-title="2026.*"/>
       <toc-element topic="api_changes_list_2025.md" toc-title="2025.*"/>
       <toc-element topic="api_changes_list_2024.md" toc-title="2024.*"/>
       <toc-element topic="api_changes_list_2023.md" toc-title="2023.*"/>
