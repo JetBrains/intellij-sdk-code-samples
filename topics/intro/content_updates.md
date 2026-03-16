@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2025 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
 
 # Content Updates
 
@@ -11,6 +11,12 @@ See [GitHub Changelog](https://github.com/JetBrains/intellij-sdk-docs/commits/ma
 <include from="snippets.topic" element-id="subscribeNews"/>
 
 ## 2026
+
+### March
+{#march-26}
+
+Top-Level Notifications
+: Describe [notification balloons](notification_balloons.md) showing relevant information without interrupting the developer's flow.
 
 ### January
 {#january-26}
