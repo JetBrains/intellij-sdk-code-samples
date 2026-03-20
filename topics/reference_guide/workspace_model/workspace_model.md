@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2024 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
 
 # Workspace Model
 
@@ -108,12 +108,14 @@ Workspace Model in corresponding entities.
 
 The following table maps to corresponding Workspace Model API and usage samples.
 
-| Project Structure Element | Project Model API                                                                                    | Workspace Model API                                                                                                | Workspace Model API Usage             |
-|---------------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------|
-| [](module.md)             | [`Module`](%gh-ic%/platform/core-api/src/com/intellij/openapi/module/Module.java)                    | [`ModuleEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/module.kt)        | [](workspace_model_usages.md#module)  |
-| [](sdk.md)                | [`Sdk`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java)            | [`SdkEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/sdk.kt)              |                                       |
-| [](library.md)            | [`Library`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/libraries/Library.java) | [`LibraryEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/dependencies.kt) | [](workspace_model_usages.md#library) |
-| [](facet.md)              | [`Facet`](%gh-ic%/platform/lang-core/src/com/intellij/facet/Facet.java)                              | [`FacetEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/facet.kt)          |                                       |
+| Project Structure Element               | Project Model API                                                                                    | Workspace Model API                                                                                                | Workspace Model API Usage             |
+|-----------------------------------------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| [](module.md)                           | [`Module`](%gh-ic%/platform/core-api/src/com/intellij/openapi/module/Module.java)                    | [`ModuleEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/module.kt)        | [](workspace_model_usages.md#module)  |
+| [Content Root](module.md#content-roots) | [`ContentEntry`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java) | [`ContentRootEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/roots.kt)    | [](workspace_model_usages.md#roots)   |
+| [Source Root](module.md#source-roots)   | [`SourceFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java) | [`SourceRootEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/roots.kt)     | [](workspace_model_usages.md#roots)   |
+| [](sdk.md)                              | [`Sdk`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java)            | [`SdkEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/sdk.kt)              |                                       |
+| [](library.md)                          | [`Library`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/libraries/Library.java) | [`LibraryEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/dependencies.kt) | [](workspace_model_usages.md#library) |
+| [](facet.md)                            | [`Facet`](%gh-ic%/platform/lang-core/src/com/intellij/facet/Facet.java)                              | [`FacetEntity`](%gh-ic%/platform/workspace/jps/src/com/intellij/platform/workspace/jps/entities/facet.kt)          |                                       |
 
 [`WorkspaceModel`](%gh-ic%/platform/backend/workspace/src/WorkspaceModel.kt)
 allows performing operations as with the [](project_model.md) API,

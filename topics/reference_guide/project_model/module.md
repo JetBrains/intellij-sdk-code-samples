@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2025 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 # Module
 
@@ -17,13 +17,20 @@ Modules include such things as source code, build scripts, unit tests, deploymen
 
 ### Content Roots
 
-The directories where the files belonging to the module (source code, resources, etc.) are stored.
-Each directory can belong to one and only one module; it's not possible to share a content root between multiple modules.
+A content root ([`ContentEntry`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) is a directory whose files belong to the module (source code, resources, etc.).
+A content root defines the filesystem boundary for the module — only files under a content root are considered part of the module.
+Each directory can belong to one and only one module; it is not possible to share a content root between multiple modules.
+A module may have multiple content roots.
 
-### Source roots
+Within each content root, specific subdirectories can be designated as [source roots](#source-roots) or [exclude roots](#exclude-roots).
+Both are represented as subinterfaces of [`ContentFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
 
+### Source Roots
+
+A source root ([`SourceFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)) marks a directory within a content root that contains source or resource files.
 A content root can have multiple source roots underneath it.
-Source roots can have different types: regular source roots, test source roots, resource roots, etc.
+Source roots can have different types: regular source roots, test source roots, resource roots, test resource roots, etc.
+There is a single `SourceFolder` interface for all root types — they are distinguished by their [`JpsModuleSourceRootType`](%gh-ic%/jps/model-api/src/org/jetbrains/jps/model/module/JpsModuleSourceRootType.java), not by separate classes.
 
 In IntelliJ IDEA, source roots are used as roots of the package hierarchy structure.
 Java classes directly under a source root will be in the root package.
@@ -31,6 +38,11 @@ Source roots can also be used to implement more fine-grained dependency checks.
 Code under a regular source root cannot depend on code under a test source root.
 
 > Not all other IntelliJ Platform-based IDEs use source roots.
+
+### Exclude Roots
+
+An exclude root ([`ExcludeFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)) marks a directory within a content root whose contents are excluded from indexing, code completion, search, navigation, and compilation.
+Typical uses include build output directories, generated files, or large data directories that should not be processed by the IDE.
 
 ### Order Entries
 
@@ -59,6 +71,10 @@ The IntelliJ Platform provides a number of classes and interfaces you can use to
 * [`ModuleRootModel`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModel.java)
 * [`ModifiableModuleModel`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/module/ModifiableModuleModel.java)
 * [`ModifiableRootModel`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ModifiableRootModel.java)
+* [`ContentEntry`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)
+* [`ContentFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java)
+* [`SourceFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java)
+* [`ExcludeFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java)
 
 This section discusses how to complete some common tasks related to management of modules.
 

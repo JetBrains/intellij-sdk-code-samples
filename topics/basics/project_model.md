@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2025 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
 
 # Project Model
 
@@ -16,6 +16,26 @@ This topic considers the concept of projects based on the IntelliJ Platform and 
 > This shouldn't affect any plugins using the Project Model API properly and which don't access internal classes.
 >
 {style="note" title="Workspace Model API (2024.2+)"}
+
+## Project Model Hierarchy
+
+The project model organizes files into a four-level hierarchy:
+
+1. **[Project](#project)** — the top-level container for all project content.
+2. **[Module](#module)** — a discrete unit of functionality within a project.
+   Each module's root configuration is available through [`ModuleRootManager`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
+3. **Content Root** ([`ContentEntry`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentEntry.java)) — a directory on disk owned by a module, defining the filesystem boundary for that module's files.
+   A module may have multiple content roots.
+4. **Source Root** and **Exclude Root** — designated subdirectories within a content root.
+   Represented by [`SourceFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/SourceFolder.java) and [`ExcludeFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ExcludeFolder.java),
+   both extending [`ContentFolder`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ContentFolder.java).
+   See [](module.md) for details.
+
+Key entry points for querying the project model:
+
+* [`ProjectRootManager`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) — project-wide root information and change notifications.
+* [`ModuleRootManager`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java) — per-module access to content entries, source roots, and order entries.
+* [`ProjectFileIndex`](%gh-ic%/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) — fast queries from a [`VirtualFile`](virtual_file.md) to its owning module, content root, and source root type.
 
 ## Project
 
