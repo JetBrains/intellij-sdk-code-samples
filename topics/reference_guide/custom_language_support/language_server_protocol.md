@@ -148,6 +148,12 @@ The LSP API sources are bundled in the IntelliJ IDEA distribution and can be fou
 
 The LSP support provided by the IntelliJ Platform covers the following features for these releases:
 
+### 2026.1
+
+- Range Formatting ([`textDocument/rangeFormatting`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_rangeFormatting)) ([IJPL-189558](https://youtrack.jetbrains.com/issue/IJPL-189558))
+- Code Lens ([`textDocument/codeLens`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_codeLens)) ([IJPL-189563](https://youtrack.jetbrains.com/issue/IJPL-189563))
+- Optimize Imports ([`textDocument/codeAction`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_codeAction) with `source.organizeImports`) ([IJPL-198789](https://youtrack.jetbrains.com/issue/IJPL-198789))
+
 ### 2025.3
 
 - Server Initiated Progress ([`$/progress`](https://microsoft.github.io/language-server-protocol/specification/#progress))
@@ -157,6 +163,9 @@ The LSP support provided by the IntelliJ Platform covers the following features 
 - Breadcrumbs ([`textDocument/documentSymbol`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_documentSymbol))
 - Sticky Lines ([`textDocument/documentSymbol`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_documentSymbol))
 - Parameter Info ([`textDocument/signatureHelp`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_signatureHelp))
+- Extend Selection / Shrink Selection ([`textDocument/selectionRange`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_selectionRange)) [2025.3.1] ([IJPL-216845](https://youtrack.jetbrains.com/issue/IJPL-216845))
+- Call Hierarchy ([`textDocument/prepareCallHierarchy`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_prepareCallHierarchy), [`callHierarchy/incomingCalls`](https://microsoft.github.io/language-server-protocol/specification/#callHierarchy_incomingCalls), [`callHierarchy/outgoingCalls`](https://microsoft.github.io/language-server-protocol/specification/#callHierarchy_outgoingCalls)) [2025.3.1] ([IJPL-210695](https://youtrack.jetbrains.com/issue/IJPL-210695))
+- Type Hierarchy ([`textDocument/prepareTypeHierarchy`](https://microsoft.github.io/language-server-protocol/specification/#textDocument_prepareTypeHierarchy), [`typeHierarchy/supertypes`](https://microsoft.github.io/language-server-protocol/specification/#typeHierarchy_supertypes), [`typeHierarchy/subtypes`](https://microsoft.github.io/language-server-protocol/specification/#typeHierarchy_subtypes)) [2025.3.1] ([IJPL-216689](https://youtrack.jetbrains.com/issue/IJPL-216689))
 
 ### 2025.2
 
