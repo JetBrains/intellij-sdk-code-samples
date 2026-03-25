@@ -1392,7 +1392,7 @@ Runs the IDE instance using the currently selected IntelliJ Platform with the bu
 It directly extends the [`JavaExec`][gradle-javaexec-task] Gradle task, which allows for an extensive configuration (system properties, memory management, etc.).
 
 This task runs against the IntelliJ Platform and plugins specified in project dependencies.
-To register a customized task, use [`intellijPlatformTesting.runIde`](tools_intellij_platform_gradle_plugin_testing_extension.md#runIde).
+To register a customized task, use [`intellijPlatformTesting.runIde`](tools_intellij_platform_gradle_plugin_testing_extension.md).
 
 
 
@@ -1733,7 +1733,7 @@ It directly extends the [Test][gradle-test-task] Gradle task, which allows for a
 
 The [`TestIdeTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt) is a class used only for handling custom `testIde` tasks.
 
-To register an additional customized test task, use [`intellijPlatformTesting.testIde`](tools_intellij_platform_gradle_plugin_testing_extension.md#testIde).
+To register an additional customized test task, use [`intellijPlatformTesting.testIde`](tools_intellij_platform_gradle_plugin_testing_extension.md).
 
 
 
@@ -1759,7 +1759,7 @@ To register an additional customized test task, use [`intellijPlatformTesting.te
 Runs performance tests on the IDE with the developed plugin installed.
 
 This task runs against the IntelliJ Platform and plugins specified in project dependencies.
-To register an additional customized task, use [`intellijPlatformTesting.testIdePerformance`](tools_intellij_platform_gradle_plugin_testing_extension.md#testIdePerformance).
+To register an additional customized task, use [`intellijPlatformTesting.testIdePerformance`](tools_intellij_platform_gradle_plugin_testing_extension.md).
 
 
 ### `testDataDirectory`
