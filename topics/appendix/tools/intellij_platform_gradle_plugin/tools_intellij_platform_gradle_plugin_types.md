@@ -276,6 +276,7 @@ Some plugins offer dedicated test frameworks, for example, `Plugin.Java` when us
 
 | Name                 | Coordinates                                                   | Reference       |
 |----------------------|---------------------------------------------------------------|-----------------|
+| `Plugin.CLion`          | `com.jetbrains.intellij.clion:clion-merged-test-framework`      | [](clion.md)    |
 | `Plugin.CSS`            | `com.jetbrains.intellij.css:css-test-framework`                  | [](webstorm.md) |
 | `Plugin.Debugger`       | `com.jetbrains.intellij.platform:debugger-test-framework`        |                 |
 | `Plugin.ExternalSystem` | `com.jetbrains.intellij.platform:external-system-test-framework` |                 |

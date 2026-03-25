@@ -500,6 +500,29 @@ Type
 
 
 
+## `ProblemsAware`
+{#ProblemsAware}
+
+<tldr>
+
+**Inherited by**: [`verifyPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPlugin), [`verifyPluginProjectConfiguration`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPluginProjectConfiguration)
+
+**Sources**: [`ProblemsAware`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/ProblemsAware.kt)
+
+</tldr>
+
+Provides access to Gradle's Problems API for structured issue reporting.
+
+### `problems`
+{#ProblemsAware-problems}
+
+Provides the injected Gradle Problems API instance used by the task.
+
+{type="narrow"}
+Type
+: `Problems`
+
+
 ## `RunnableIdeAware`
 {#RunnableIdeAware}
 
@@ -812,6 +835,65 @@ Type
 Default value
 : [`intellijPlatform.splitModeTarget`](tools_intellij_platform_gradle_plugin_extension.md#intellijPlatform-splitModeTarget)
 
+### `sandboxConfigFrontendDirectory`
+{#SplitModeAware-sandboxConfigFrontendDirectory}
+
+A frontend configuration directory located within the sandbox.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `sandboxPluginsFrontendDirectory`
+{#SplitModeAware-sandboxPluginsFrontendDirectory}
+
+A frontend plugins directory located within the sandbox.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `sandboxSystemFrontendDirectory`
+{#SplitModeAware-sandboxSystemFrontendDirectory}
+
+A frontend system directory located within the sandbox.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `sandboxLogFrontendDirectory`
+{#SplitModeAware-sandboxLogFrontendDirectory}
+
+A frontend log directory located within the sandbox.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `splitModeFrontendProperties`
+{#SplitModeAware-splitModeFrontendProperties}
+
+Path to a properties file used to configure the frontend process when the IDE is started in Split Mode.
+
+{type="narrow"}
+Type
+: `Provider<RegularFile>`
+
+
+### `validateSplitModeSupport()`
+{#SplitModeAware-validateSplitModeSupport}
+
+Validates that the resolved IntelliJ Platform supports Split Mode.
+
+{type="narrow"}
+Throws
+: `IllegalArgumentException`
+
 
 
 ## `TestableAware`
@@ -819,13 +901,52 @@ Default value
 
 <tldr>
 
-**Inherited by**: [`prepareTest`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTest)
+**Inherited by**: [`prepareTest`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTest), [`testIde`](tools_intellij_platform_gradle_plugin_tasks.md#testIde), [`testIdeUi`](tools_intellij_platform_gradle_plugin_tasks.md#testIdeUi), [`testIdePerformance`](tools_intellij_platform_gradle_plugin_tasks.md#testIdePerformance)
 
 **Sources**: [`TestableAware`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/aware/TestableAware.kt)
 
 </tldr>
 
 Interface used to describe tasks used for running tests, such as [`testIdeUi`](tools_intellij_platform_gradle_plugin_tasks.md#testIdeUi), [`testIdePerformance`](tools_intellij_platform_gradle_plugin_tasks.md#testIdePerformance), or [`prepareTest`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTest) used for configuring `test` and keeping it immutable.
+
+### `intellijPlatformClasspathConfiguration`
+{#TestableAware-intellijPlatformClasspathConfiguration}
+
+Holds the `intellijPlatformClasspath` configuration.
+
+{type="narrow"}
+Type
+: `ConfigurableFileCollection`
+
+
+### `intellijPlatformTestClasspathConfiguration`
+{#TestableAware-intellijPlatformTestClasspathConfiguration}
+
+Holds the `intellijPlatformTestClasspath` configuration.
+
+{type="narrow"}
+Type
+: `ConfigurableFileCollection`
+
+
+### `intellijPlatformTestRuntimeClasspathConfiguration`
+{#TestableAware-intellijPlatformTestRuntimeClasspathConfiguration}
+
+Holds the `intellijPlatformTestRuntimeClasspath` configuration.
+
+{type="narrow"}
+Type
+: `ConfigurableFileCollection`
+
+
+### `pluginDirectory`
+{#TestableAware-pluginDirectory}
+
+Specifies the directory where the plugin artifacts are placed for testing.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
 
 
 <include from="snippets.topic" element-id="missingContent"/>

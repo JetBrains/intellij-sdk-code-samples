@@ -25,7 +25,7 @@ However, most cases will be covered by the [](tools_intellij_platform_gradle_plu
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform)
 
 **Depends on**: [`jarSearchableOptions`](#jarSearchableOptions), [`prepareSandbox`](#prepareSandbox)
 
@@ -65,6 +65,8 @@ Type
 
 <tldr>
 
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform)
+
 **Depends on**: [`prepareSandbox`](#prepareSandbox)
 
 **Extends**: [`JavaExec`][gradle-javaexec-task], [`RunnableIdeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#RunnableIdeAware)
@@ -92,7 +94,7 @@ Type
 : `DirectoryProperty`
 
 Default value
-:: <path>[buildDirectory]/tmp/buildSearchableOptions</path>
+: <path>[buildDirectory]/tmp/buildSearchableOptions</path>
 
 
 ### `showPaidPluginWarning`
@@ -107,6 +109,24 @@ Type
 
 Default value
 : [`paidPluginSearchableOptionsWarning`](tools_intellij_platform_gradle_plugin_gradle_properties.md#paidPluginSearchableOptionsWarning) && `productDescriptor` is defined
+
+
+## `cleanSandbox`
+{#cleanSandbox}
+
+<link-summary>Cleans sandbox data produced for the current Gradle project.</link-summary>
+
+<tldr>
+
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module)
+
+**Extends**: [`Delete`][gradle-delete-task]
+
+**Sources**: [`CleanSandboxTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/CleanSandboxTask.kt)
+
+</tldr>
+
+Cleans the sandbox directory created by [`prepareSandbox`](#prepareSandbox) for the current project.
 
 
 
@@ -216,6 +236,135 @@ Type
 : `RegularFileProperty`
 
 
+## `generateLexer`
+{#generateLexer}
+
+<link-summary>Generates a lexer with JFlex for IntelliJ Platform GrammarKit projects.</link-summary>
+
+<tldr>
+
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
+
+**Extends**: [`JavaExec`][gradle-javaexec-task]
+
+**Sources**: [`GenerateLexerTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateLexerTask.kt)
+
+</tldr>
+
+Generates a lexer from a `.flex` definition file using JFlex.
+
+
+### `targetOutputDir`
+{#generateLexer-targetOutputDir}
+
+The output directory for the generated lexer.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `sourceFile`
+{#generateLexer-sourceFile}
+
+The source Flex file used to generate the lexer.
+
+{type="narrow"}
+Type
+: `RegularFileProperty`
+
+
+### `skeleton`
+{#generateLexer-skeleton}
+
+Optional path to the skeleton file passed with the `--skel` option.
+
+{type="narrow"}
+Type
+: `RegularFileProperty`
+
+Default value
+: The default JFlex `idea-flex.skeleton`
+
+
+### `purgeOldFiles`
+{#generateLexer-purgeOldFiles}
+
+Purges old files from the target directory before generating the lexer.
+
+{type="narrow"}
+Type
+: `Property<Boolean>`
+
+
+## `generateParser`
+{#generateParser}
+
+<link-summary>Generates a parser with GrammarKit for IntelliJ Platform projects.</link-summary>
+
+<tldr>
+
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
+
+**Extends**: [`JavaExec`][gradle-javaexec-task]
+
+**Sources**: [`GenerateParserTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/GenerateParserTask.kt)
+
+</tldr>
+
+Generates parser and PSI files from a `.bnf` definition file using GrammarKit.
+
+
+### `sourceFile`
+{#generateParser-sourceFile}
+
+The source BNF file used to generate the parser.
+
+{type="narrow"}
+Type
+: `RegularFileProperty`
+
+
+### `targetRootOutputDir`
+{#generateParser-targetRootOutputDir}
+
+The root output directory for generated parser and PSI files.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `pathToParser`
+{#generateParser-pathToParser}
+
+The generated parser class location relative to [`targetRootOutputDir`](#generateParser-targetRootOutputDir).
+
+{type="narrow"}
+Type
+: `Property<String>`
+
+
+### `pathToPsiRoot`
+{#generateParser-pathToPsiRoot}
+
+The generated PSI root location relative to [`targetRootOutputDir`](#generateParser-targetRootOutputDir).
+
+{type="narrow"}
+Type
+: `Property<String>`
+
+
+### `purgeOldFiles`
+{#generateParser-purgeOldFiles}
+
+Purges previously generated parser and PSI files before generation.
+
+{type="narrow"}
+Type
+: `Property<Boolean>`
+
+
 
 ## `initializeIntelliJPlatformPlugin`
 {#initializeIntelliJPlatformPlugin}
@@ -224,9 +373,9 @@ Type
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base), [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
 
-**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware)
+**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`ModuleAware`](tools_intellij_platform_gradle_plugin_task_awares.md#ModuleAware)
 
 **Sources**: [`InitializeIntelliJPlatformPluginTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/InitializeIntelliJPlatformPluginTask.kt)
 
@@ -849,7 +998,7 @@ Default value
 
 **Depends on**: `jar`, [`instrumentedJar`](#instrumentedJar)
 
-**Extends**: [`Sync`][gradle-jar-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
+**Extends**: [`Sync`][gradle-sync-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
 
 **Sources**: [`PrepareSandboxTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
 
@@ -875,7 +1024,7 @@ Type
 : `Property<String>`
 
 Default value
-: [`SandboxAware.sandboxPluginsDirectory`](tools_intellij_platform_gradle_plugin_task_awares.md#SandboxAware-sandboxPluginsDirectory)
+: Derived from the task name, for example `""`, `-test`, or `-testIdePerformance`
 
 
 ### `defaultDestinationDirectory`
@@ -888,7 +1037,7 @@ Type
 : `DirectoryProperty`
 
 Default value
-: [`SandboxAware.sandboxPluginsDirectory`](tools_intellij_platform_gradle_plugin_task_awares.md#SandboxAware-sandboxPluginsDirectory)
+: [`SandboxAware.sandboxPluginsDirectory`](tools_intellij_platform_gradle_plugin_task_awares.md#SandboxAware-sandboxPluginsDirectory), or [`SplitModeAware.sandboxPluginsFrontendDirectory`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware-sandboxPluginsFrontendDirectory) when [`splitModeTarget`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware-splitModeTarget) is `FRONTEND`
 
 
 ### `pluginName`
@@ -921,7 +1070,7 @@ Default value
 {#prepareSandbox-disabledPlugins}
 
 An internal field to hold a list of plugins to be disabled within the current sandbox.
-This property is controlled with [`disablePlugin()`](tools_intellij_platform_gradle_plugin_testing_extension.md#plugins) method of [](tools_intellij_platform_gradle_plugin_testing_extension.md).
+This property is controlled with the `disablePlugin()` and `disablePlugins()` methods of [](tools_intellij_platform_gradle_plugin_testing_extension.md#plugins).
 
 {type="narrow"}
 Type
@@ -931,15 +1080,14 @@ Type
 ### `pluginJar`
 {#prepareSandbox-pluginJar}
 
-Specifies the output of the [`Jar`][gradle-jar-task] task.
-The proper `Jar.archiveFile` picked depends on whether code instrumentation is enabled.
+Specifies the output archive copied into the sandbox as the main plugin artifact.
 
 {type="narrow"}
 Type
 : `RegularFileProperty`
 
 Default value
-: `Jar.archiveFile`
+: [`composedJar.archiveFile`](#composedJar-archiveFile)
 
 
 ### `pluginsClasspath`
@@ -991,11 +1139,11 @@ Prepares an immutable [`test`](#test) task and provides all necessary dependenci
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module)
 
 **Depends on**: `jar`, [`instrumentedJar`](#instrumentedJar)
 
-**Extends**: [`Sync`][gradle-jar-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
+**Extends**: [`Sync`][gradle-sync-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
 
 **Sources**: [`PrepareSandboxTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
 
@@ -1005,6 +1153,54 @@ The [`prepareSandbox`](#prepareSandbox) task instance configured to work with th
 
 
 
+## `prepareTestIdePerformanceSandbox`
+{#prepareTestIdePerformanceSandbox}
+
+<link-summary>Prepares the sandbox used by the `testIdePerformance` task.</link-summary>
+
+<tldr>
+
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module)
+
+**Depends on**: `jar`, [`instrumentedJar`](#instrumentedJar)
+
+**Extends**: [`Sync`][gradle-sync-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
+
+**Sources**: [`PrepareSandboxTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrepareSandboxTask.kt)
+
+</tldr>
+
+The [`prepareSandbox`](#prepareSandbox) task instance configured to work with the [`testIdePerformance`](#testIdePerformance) task.
+
+
+## `printBundledModules`
+{#printBundledModules}
+
+<link-summary>Prints the list of bundled modules available within the currently targeted IntelliJ Platform.</link-summary>
+
+<tldr>
+
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base), [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
+
+**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware)
+
+**Sources**: [`PrintBundledModulesTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/PrintBundledModulesTask.kt)
+
+</tldr>
+
+Prints the list of bundled modules available within the currently targeted IntelliJ Platform.
+
+
+### `idesManager`
+{#printBundledModules-idesManager}
+
+Build service used to resolve the currently targeted IDE and inspect its bundled modules.
+
+{type="narrow"}
+Type
+: `Property<IdesManagerService>`
+
+
 ## `printBundledPlugins`
 {#printBundledPlugins}
 
@@ -1012,7 +1208,7 @@ The [`prepareSandbox`](#prepareSandbox) task instance configured to work with th
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base), [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
 
 **Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware)
 
@@ -1031,7 +1227,7 @@ Prints the list of bundled plugins available within the currently targeted Intel
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base), [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
 
 **Extends**: [`DefaultTask`][gradle-default-task], [`ProductReleasesValueSource.FilterParameters`](tools_intellij_platform_gradle_plugin_types.md#ProductReleasesValueSource-FilterParameters)
 
@@ -1196,7 +1392,7 @@ Runs the IDE instance using the currently selected IntelliJ Platform with the bu
 It directly extends the [`JavaExec`][gradle-javaexec-task] Gradle task, which allows for an extensive configuration (system properties, memory management, etc.).
 
 This task runs against the IntelliJ Platform and plugins specified in project dependencies.
-To register a customized task, use [`intelliJPlatformTestingExtension.runIde`](tools_intellij_platform_gradle_plugin_testing_extension.md).
+To register a customized task, use [`intellijPlatformTesting.runIde`](tools_intellij_platform_gradle_plugin_testing_extension.md#runIde).
 
 
 
@@ -1268,7 +1464,7 @@ intellijPlatformTesting.runIde {
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module), [](tools_intellij_platform_gradle_plugin_plugins.md#base), [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit)
 
 **Extends**: [`DefaultTask`][gradle-default-task]
 
@@ -1505,7 +1701,7 @@ Default value
 
 **Depends on**: [`prepareTest`](#prepareTest)
 
-**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`PluginAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginAware)
+**Extends**: [`Test`][gradle-test-task]
 
 **Sources**: [`TestCompanion`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/companion/TestCompanion.kt)
 
@@ -1520,32 +1716,24 @@ The task itself isn't mutated and a dedicated [`prepareTest`](#prepareTest) task
 ## `testIde`
 {#testIde}
 
-<secondary-label ref="unavailable"/>
-
 <link-summary>Runs tests using a custom IntelliJ Platform with the developed plugin installed.</link-summary>
 
 <tldr>
 
 **Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module)
 
-**Depends on**: [`prepareTest`](#prepareTest)
-
-**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`PluginAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginAware)
+**Extends**: [`Test`][gradle-test-task], [`TestableAware`](tools_intellij_platform_gradle_plugin_task_awares.md#TestableAware), [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware)
 
 **Sources**: [`TestIdeTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt)
 
 </tldr>
-
-> The `testIde` task is not registered by default.
->
-{style="warning"}
 
 Runs tests using a custom IntelliJ Platform with the developed plugin installed.
 It directly extends the [Test][gradle-test-task] Gradle task, which allows for an extensive configuration (system properties, memory management, etc.).
 
 The [`TestIdeTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/TestIdeTask.kt) is a class used only for handling custom `testIde` tasks.
 
-To register a customized test task, use [`intelliJPlatformTestingExtension.testIde`](tools_intellij_platform_gradle_plugin_testing_extension.md).
+To register an additional customized test task, use [`intellijPlatformTesting.testIde`](tools_intellij_platform_gradle_plugin_testing_extension.md#testIde).
 
 
 
@@ -1560,7 +1748,7 @@ To register a customized test task, use [`intelliJPlatformTestingExtension.testI
 
 **Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform)
 
-**Depends on**: [`prepareSandbox`](#prepareSandbox)
+**Depends on**: [`prepareTestIdePerformanceSandbox`](#prepareTestIdePerformanceSandbox)
 
 **Extends**: [`JavaExec`][gradle-javaexec-task], [`RunnableIdeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#RunnableIdeAware), [`TestableAware`](tools_intellij_platform_gradle_plugin_task_awares.md#TestableAware), [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware)
 
@@ -1568,9 +1756,43 @@ To register a customized test task, use [`intelliJPlatformTestingExtension.testI
 
 </tldr>
 
-> Not implemented.
->
-{style="warning"}
+Runs performance tests on the IDE with the developed plugin installed.
+
+This task runs against the IntelliJ Platform and plugins specified in project dependencies.
+To register an additional customized task, use [`intellijPlatformTesting.testIdePerformance`](tools_intellij_platform_gradle_plugin_testing_extension.md#testIdePerformance).
+
+
+### `testDataDirectory`
+{#testIdePerformance-testDataDirectory}
+
+Path to the directory with test projects and `.ijperf` files.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `artifactsDirectory`
+{#testIdePerformance-artifactsDirectory}
+
+Path to the directory where performance test artifacts, such as IDE logs, snapshots, and screenshots, are stored.
+
+{type="narrow"}
+Type
+: `DirectoryProperty`
+
+
+### `profilerName`
+{#testIdePerformance-profilerName}
+
+Name of the profiler used during execution.
+
+{type="narrow"}
+Type
+: `Property<ProfilerName>`
+
+Default value
+: `ProfilerName.ASYNC`
 
 
 
@@ -1583,7 +1805,7 @@ To register a customized test task, use [`intelliJPlatformTestingExtension.testI
 
 <tldr>
 
-**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform)
+**Available in:** [](tools_intellij_platform_gradle_plugin_plugins.md#platform), [](tools_intellij_platform_gradle_plugin_plugins.md#module)
 
 **Extends**: [`Test`][gradle-test-task], [`TestableAware`](tools_intellij_platform_gradle_plugin_task_awares.md#TestableAware)
 
@@ -1620,7 +1842,7 @@ Default value
 
 **Depends on**: [`buildPlugin`](#buildPlugin)
 
-**Extends**: [`JavaExec`][gradle-javaexec-task], [`RuntimeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#RuntimeAware), [`PluginVerifierAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginVerifierAware)
+**Extends**: [`JavaExec`][gradle-javaexec-task], [`RuntimeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#RuntimeAware), [`PluginVerifierAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginVerifierAware), [`ProblemsAware`](tools_intellij_platform_gradle_plugin_task_awares.md#ProblemsAware)
 
 **Sources**: [`VerifyPluginTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginTask.kt)
 
@@ -1793,6 +2015,32 @@ Default value
 : [`intellijPlatform.pluginVerification.verificationReportsFormats`](tools_intellij_platform_gradle_plugin_extension.md#intellijPlatform-pluginVerification-verificationReportsFormats)
 
 
+### `listIdes`
+{#verifyPlugin-listIdes}
+
+Lists the IDEs that would be used for verification without running the verification itself.
+
+{type="narrow"}
+Type
+: `Property<Boolean>`
+
+Default value
+: `false`
+
+
+### `problemsReportFile`
+{#verifyPlugin-problemsReportFile}
+
+Default path of the Problems API HTML report file produced for verification failures.
+
+{type="narrow"}
+Type
+: `RegularFileProperty`
+
+Default value
+: <path>[buildDirectory]/reports/problems/problems-report.html</path>
+
+
 ## `verifyPluginProjectConfiguration`
 {#verifyPluginProjectConfiguration}
 
@@ -1804,7 +2052,7 @@ Default value
 
 **Depends on**: [`patchPluginXml`](#patchPluginXml)
 
-**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`PluginAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginAware)
+**Extends**: [`DefaultTask`][gradle-default-task], [`IntelliJPlatformVersionAware`](tools_intellij_platform_gradle_plugin_task_awares.md#IntelliJPlatformVersionAware), [`KotlinMetadataAware`](tools_intellij_platform_gradle_plugin_task_awares.md#KotlinMetadataAware), [`RuntimeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#RuntimeAware), [`PluginAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginAware), [`ModuleAware`](tools_intellij_platform_gradle_plugin_task_awares.md#ModuleAware), [`ProblemsAware`](tools_intellij_platform_gradle_plugin_task_awares.md#ProblemsAware)
 
 **Sources**: [`VerifyPluginProjectConfigurationTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginProjectConfigurationTask.kt)
 
@@ -1812,11 +2060,11 @@ Default value
 
 Validates the plugin project configuration:
 - The [`patchPluginXml.sinceBuild`](#patchPluginXml-sinceBuild) property can't be lower than the target IntelliJ Platform major version.
+- The `until-build` property should be removed for IntelliJ Platform `2024.3+` (`243+`).
 - The Java/Kotlin `sourceCompatibility` and `targetCompatibility` properties should be aligned with the Java versions required by [`patchPluginXml.sinceBuild`](#patchPluginXml-sinceBuild) and the currently used IntelliJ Platform.
 - The Kotlin API version should be aligned with the version required by [`patchPluginXml.sinceBuild`](#patchPluginXml-sinceBuild) and the currently used IntelliJ Platform.
 - The used IntelliJ Platform version should be higher than `2022.3` (`223.0`).
 - The dependency on the [](using_kotlin.md#kotlin-standard-library) should be excluded.
-- The Kotlin plugin in version `1.8.20` is not used with IntelliJ Platform Gradle Plugin due to the 'java.lang.OutOfMemoryError: Java heap space' exception.
 - The Kotlin Coroutines library should not be added explicitly to the project as it is already provided with the IntelliJ Platform.
 - The IntelliJ Platform cache directory should be excluded from the version control system. Add the `.intellijPlatform` entry to the <path>.gitignore</path> file.
 - The currently selected Java Runtime is not JetBrains Runtime (JBR).
@@ -1829,21 +2077,8 @@ See also:
 - [](using_kotlin.md#incremental-compilation)
 
 
-### `reportDirectory`
-{#verifyPluginProjectConfiguration-reportDirectory}
-
-Specifies the report directory where the verification result will be stored.
-
-{type="narrow"}
-Type
-: `DirectoryProperty`
-
-Default value
-: <path>[buildDirectory]/reports/verifyPluginConfiguration</path>
-
-
-### `rootProject`
-{#verifyPluginProjectConfiguration-rootProject}
+### `rootDirectory`
+{#verifyPluginProjectConfiguration-rootDirectory}
 
 Specifies the root project path.
 
@@ -1862,10 +2097,10 @@ Specifies the IntelliJ Platform cache directory.
 
 {type="narrow"}
 Type
-: `Property<File>`
+: `DirectoryProperty`
 
 Default value
-: [`intellijPlatform.cachePath`](tools_intellij_platform_gradle_plugin_extension.md#intellijPlatform-caching-path)
+: [`intellijPlatform.caching.path`](tools_intellij_platform_gradle_plugin_extension.md#intellijPlatform-caching-path)
 
 
 ### `gitignoreFile`
@@ -1875,7 +2110,7 @@ Specifies the `.gitignore` file located in the <path>[rootDirectory]</path>, tra
 
 {type="narrow"}
 Type
-: `Property<File>`
+: `RegularFileProperty`
 
 Default value
 : <path>[rootProject]/.gitignore</path>
@@ -1905,6 +2140,20 @@ Type
 
 Default value
 : `JavaCompile.targetCompatibility`
+
+
+### `mutedMessages`
+{#verifyPluginProjectConfiguration-mutedMessages}
+
+List of message patterns to mute during verification.
+Each pattern is matched against the message text using a case-sensitive `contains` check.
+
+{type="narrow"}
+Type
+: `ListProperty<String>`
+
+Default value
+: [`verifyPluginProjectConfigurationMutedMessages`](tools_intellij_platform_gradle_plugin_gradle_properties.md#verifyPluginProjectConfigurationMutedMessages)
 
 
 ### `kotlinPluginAvailable`
@@ -1998,20 +2247,6 @@ Default value
 : The `org.jetbrains.kotlinx:kotlinx-coroutines` dependency presence
 
 
-### `hasModulePlugin`
-{#verifyPluginProjectConfiguration-hasModulePlugin}
-
-Defines if the current module is a main project or imported module, which uses [](tools_intellij_platform_gradle_plugin_plugins.md#module) plugin.
-
-{type="narrow"}
-Type
-: `Property<Boolean>`
-
-Default value
-: The [](tools_intellij_platform_gradle_plugin_plugins.md#module) plugin presence
-
-
-
 ## `verifyPluginSignature`
 {#verifyPluginSignature}
 
@@ -2023,7 +2258,7 @@ Default value
 
 **Extends**: [`JavaExec`][gradle-javaexec-task], [`SigningAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SigningAware)
 
-**Sources**: [`PrepareSandboxTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginSignatureTask.kt)
+**Sources**: [`VerifyPluginSignatureTask`](%gh-ijpgp%/src/main/kotlin/org/jetbrains/intellij/platform/gradle/tasks/VerifyPluginSignatureTask.kt)
 
 </tldr>
 
@@ -2157,6 +2392,7 @@ Default value
 <include from="snippets.topic" element-id="missingContent"/>
 
 [gradle-default-task]: https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html
+[gradle-delete-task]: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Delete.html
 [gradle-jar-task]: https://docs.gradle.org/current/dsl/org.gradle.jvm.tasks.Jar.html
 [gradle-javaexec-task]: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
 [gradle-sync-task]: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Sync.html

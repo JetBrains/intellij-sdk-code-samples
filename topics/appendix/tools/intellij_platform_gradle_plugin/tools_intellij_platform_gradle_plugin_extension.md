@@ -179,7 +179,7 @@ Type
 : `DirectoryProperty`
 
 Default value
-: <path>[buildDirectory]/idea-sandbox</path>
+: <path>[rootProject]/.intellijPlatform/sandbox</path>
 
 See also:
 - [Tasks: `prepareSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareSandbox)
@@ -203,7 +203,7 @@ Type
 : `Property<Boolean>`
 
 Default value
-: `true`
+: `false`
 
 See also:
 - [Task Awares: `SplitModeAware`](tools_intellij_platform_gradle_plugin_task_awares.md#SplitModeAware)
@@ -823,7 +823,7 @@ intellijPlatform {
 ### `path`
 {#intellijPlatform-caching-path}
 
-Provides read-only access to the IntelliJ Platform project cache location.
+Specifies the IntelliJ Platform project cache location.
 
 The IntelliJ Platform cache is used for storing IntelliJ Platform Gradle Plugin-specific files, such as:
 - XML files generated for the [`localPlatformArtifacts()`](tools_intellij_platform_gradle_plugin_repositories_extension.md#additional-repositories) local Ivy repository
@@ -833,11 +833,8 @@ The IntelliJ Platform cache is used for storing IntelliJ Platform Gradle Plugin-
 This path can be changed with the [`org.jetbrains.intellij.platform.intellijPlatformCache`](tools_intellij_platform_gradle_plugin_gradle_properties.md#intellijPlatformCache) Gradle property
 
 {type="narrow"}
-Access
-: Read-only
-
 Type
-: `Path`
+: `DirectoryProperty`
 
 Default value
 : <path>[rootProject]/.intellijPlatform/</path>
@@ -1295,8 +1292,6 @@ intellijPlatform {
   pluginVerification {
     cliPath = file("/path/to/plugin-verifier-cli.jar")
     freeArgs = listOf("foo", "bar")
-    homeDirectory = file("/path/to/pluginVerifierHomeDirectory/")
-    downloadDirectory = file("/path/to/pluginVerifierHomeDirectory/ides/")
     failureLevel = VerifyPluginTask.FailureLevel.ALL
     verificationReportsDirectory = "build/reports/pluginVerifier"
     verificationReportsFormats = VerifyPluginTask.VerificationReportsFormats.ALL
@@ -1324,8 +1319,6 @@ intellijPlatform {
   pluginVerification {
     cliPath = file('/path/to/plugin-verifier-cli.jar')
     freeArgs = ['foo', 'bar']
-    homeDirectory = file('/path/to/pluginVerifierHomeDirectory/')
-    downloadDirectory = file('/path/to/pluginVerifierHomeDirectory/ides/')
     failureLevel = VerifyPluginTask.FailureLevel.ALL
     verificationReportsDirectory = 'build/reports/pluginVerifier'
     verificationReportsFormats = VerifyPluginTask.VerificationReportsFormats.ALL
@@ -1364,19 +1357,6 @@ Type
 
 See also:
 - [Task Awares: `PluginVerifierAware`](tools_intellij_platform_gradle_plugin_task_awares.md#PluginVerifierAware)
-
-
-### `downloadDirectory`
-{#intellijPlatform-pluginVerification-downloadDirectory}
-
-The path to the directory where IDEs used for the verification will be downloaded.
-
-{type="narrow"}
-Type
-: `DirectoryProperty`
-
-Default value
-: <path>[`homeDirectory`](#intellijPlatform-pluginVerification-homeDirectory)/ides</path>
 
 
 ### `failureLevel`
@@ -1422,23 +1402,6 @@ Type
 
 See also:
 - [Tasks: `verifyPlugin.freeArgs`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPlugin-freeArgs)
-
-
-### `homeDirectory`
-{#intellijPlatform-pluginVerification-homeDirectory}
-
-Retrieve the Plugin Verifier home directory used for storing downloaded IDEs.
-Following home directory resolving method is taken directly from the Plugin Verifier to keep the compatibility.
-
-{type="narrow"}
-Type
-: `DirectoryProperty`
-
-Default value
-: - Directory specified with `plugin.verifier.home.dir` system property
-  - Directory specified with `XDG_CACHE_HOME` environment variable
-  - <path>~/.cache/pluginVerifier</path>
-  - <path>[buildDirectory]/tmp/pluginVerifier</path>
 
 
 ### `ignoredProblemsFile`
@@ -1513,7 +1476,7 @@ Type
 : `ListProperty<VerificationReportsFormats>`
 
 Default value
-: [`VerificationReportsFormats.PLAIN`](tools_intellij_platform_gradle_plugin_types.md#VerificationReportsFormats), [`FailureVerificationReportsFormats`](tools_intellij_platform_gradle_plugin_types.md#VerificationReportsFormats)
+: [`VerificationReportsFormats.PLAIN`](tools_intellij_platform_gradle_plugin_types.md#VerificationReportsFormats), [`VerificationReportsFormats.HTML`](tools_intellij_platform_gradle_plugin_types.md#VerificationReportsFormats)
 
 See also:
 - [Tasks: `verifyPlugin.verificationReportsFormats`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPlugin-verificationReportsFormats)

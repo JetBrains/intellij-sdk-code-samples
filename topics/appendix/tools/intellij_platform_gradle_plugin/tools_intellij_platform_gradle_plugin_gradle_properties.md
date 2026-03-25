@@ -79,6 +79,26 @@ Example
 org.jetbrains.intellij.platform.intellijPlatformIdesCache=/path/to/ides-cache/
 ```
 
+## `intellijPlatformIdesCacheEnabled`
+{#intellijPlatformIdesCacheEnabled}
+
+Indicates whether caching for IntelliJ Platform IDEs is enabled globally.
+
+This property can still be overridden locally with `useCache` in an IntelliJ Platform dependency configuration.
+
+See also:
+- [Extension: `intellijPlatform.caching.ides.enabled`](tools_intellij_platform_gradle_plugin_extension.md#intellijPlatform-caching-ides-enabled)
+
+{type="narrow"}
+Default value
+: `false`
+
+Example
+:
+```
+org.jetbrains.intellij.platform.intellijPlatformIdesCacheEnabled=true
+```
+
 ## `localPlatformArtifacts`
 {#localPlatformArtifacts}
 
@@ -149,7 +169,7 @@ org.jetbrains.intellij.platform.productsReleasesAndroidStudioUrl=https://...
 ## `productsReleasesJetBrainsIdesUrl`
 {#productsReleasesJetBrainsIdesUrl}
 
-Specifies the URL from which the list of all Android Studio releases is fetched.
+Specifies the URL from which the list of all JetBrains IDE releases is fetched.
 This listing is later parsed by `ProductReleasesValueSource` to provide a list of IDEs matching the filtering criteria for running the IntelliJ Plugin Verifier tool with the [`verifyPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPlugin) task.
 
 {type="narrow"}
@@ -223,10 +243,10 @@ org.jetbrains.intellij.platform.useCacheRedirector=false
 ```
 
 
-## `addDefaultIntellijPlatformDependencies`
-{#addDefaultIntellijPlatformDependencies}
+## `addDefaultIntelliJPlatformDependencies`
+{#addDefaultIntelliJPlatformDependencies}
 
-Controls whether default IntelliJ Platform repositories and coordinates (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
+Controls whether default IntelliJ Platform dependencies (like `com.intellij` and `intellij.rider`) should be added automatically when creating a dependency on the IntelliJ Platform.
 
 {type="narrow"}
 Default value
@@ -235,7 +255,7 @@ Default value
 Example
 :
 ```
-org.jetbrains.intellij.platform.addDefaultIntellijPlatformDependencies=false
+org.jetbrains.intellij.platform.addDefaultIntelliJPlatformDependencies=false
 ```
 
 

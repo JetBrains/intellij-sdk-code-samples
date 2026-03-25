@@ -116,8 +116,19 @@ See [](#custom-target-platforms) for non-default targets.
 Notes:
 - Writerside (`WRS`) is deprecated and no longer available as a target IntelliJ Platform.
 - Aqua (`QA`) has been removed as a target IntelliJ Platform.
-- IntelliJ IDEA Community (`IC`) has been removed as a target IntelliJ Platform.
-- PyCharm Community (`PC`) has been removed as a target IntelliJ Platform.
+- IntelliJ IDEA Community (`IC`) and Ultimate (`IU`) legacy helpers remain available for versions earlier than 2025.3.
+- PyCharm Community (`PC`) and Professional (`PY`) legacy helpers remain available for versions earlier than 2025.3.
+
+### Legacy Target Platform Helpers
+
+The following helpers are still available for resolving pre-2025.3 product lines:
+
+| Function                                         | Description                                                      |
+|--------------------------------------------------|------------------------------------------------------------------|
+| `intellijIdeaCommunity(version, configure = {})` | IntelliJ IDEA Community (`IC`) for versions earlier than 2025.3. |
+| `intellijIdeaUltimate(version, configure = {})`  | IntelliJ IDEA Ultimate (`IU`) for versions earlier than 2025.3.  |
+| `pycharmCommunity(version, configure = {})`      | PyCharm Community (`PC`) for versions earlier than 2025.3.       |
+| `pycharmProfessional(version, configure = {})`   | PyCharm Professional (`PY`) for versions earlier than 2025.3.    |
 
 ### Custom Target Platforms
 
@@ -472,11 +483,33 @@ If the exact version is unavailable, the closest one is used, found by scanning 
 
 The `javaCompiler()` helper is applied by default and refers to the tool version close to the currently used IntelliJ Platform.
 
-| Function                                              | Description                                                                                 |
-|-------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Function                                              | Description                                                                                  |
+|-------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | <p>`instrumentationTools()`</p>                       | Deprecated: calling this helper is no longer necessary; previously applied `javaCompiler()`. |
-| <p>`javaCompiler()`</p><p>`javaCompiler(version)`</p> | Adds a dependency on Java Compiler.                                                         |
+| <p>`javaCompiler()`</p><p>`javaCompiler(version)`</p> | Adds a dependency on Java Compiler.                                                          |
 
 - [](tools_intellij_platform_gradle_plugin_tasks.md#instrumentCode)
+
+## Grammar and Parser Generation
+
+Helpers for the [](tools_intellij_platform_gradle_plugin_plugins.md#grammarkit) plugin tasks.
+
+| Function                                 | Description                                                                                                              |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| `grammarKit()`<br/>`grammarKit(version)` | Adds a Grammar Kit dependency used by [`generateParser`](tools_intellij_platform_gradle_plugin_tasks.md#generateParser). |
+| `jflex()`<br/>`jflex(version)`           | Adds a JFlex dependency used by [`generateLexer`](tools_intellij_platform_gradle_plugin_tasks.md#generateLexer).         |
+
+## Compose UI
+
+| Function      | Description                                                                             |
+|---------------|-----------------------------------------------------------------------------------------|
+| `composeUI()` | Adds the bundled modules required for working with Compose UI in the IntelliJ Platform. |
+
+## Dependency Exclusions
+
+| Function                | Description                                                              |
+|-------------------------|--------------------------------------------------------------------------|
+| `excludeKotlinStdlib()` | Excludes transitive Kotlin Standard Library artifacts from a dependency. |
+| `excludeCoroutines()`   | Excludes transitive Kotlin Coroutines artifacts from a dependency.       |
 
 <include from="snippets.topic" element-id="missingContent"/>

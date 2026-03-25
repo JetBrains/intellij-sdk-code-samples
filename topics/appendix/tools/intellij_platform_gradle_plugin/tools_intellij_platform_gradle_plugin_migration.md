@@ -33,17 +33,14 @@ plugins {
 
 ## Migration Plugin
 
-The 2.x release introduces multiple [](tools_intellij_platform_gradle_plugin_plugins.md), featuring a dedicated one to help with migration from Gradle IntelliJ Plugin 1.x: [](tools_intellij_platform_gradle_plugin_plugins.md#migration).
+Early 2.x releases introduced a dedicated migration plugin to ease the transition from Gradle IntelliJ Plugin 1.x.
 
 When you apply the [](#plugin-id-change), Gradle will fail to process the <path>build.gradle.kts</path> file as the old [](#intellij-extension) doesn't exist anymore.
-To fill all gaps and help users figure out required changes - right in the IDE - the `org.jetbrains.intellij.platform.migration` plugin was introduced:
 
-```kotlin
-plugins {
-  id("org.jetbrains.intellij.platform") version "%intellij-platform-gradle-plugin-version%"
-  id("org.jetbrains.intellij.platform.migration") version "%intellij-platform-gradle-plugin-version%"
-}
-```
+> The `org.jetbrains.intellij.platform.migration` plugin was removed in IntelliJ Platform Gradle Plugin `2.12.0`.
+> Use this migration guide as a manual checklist and apply only `org.jetbrains.intellij.platform`.
+>
+{style="note"}
 
 ## `intellij {}` Extension
 
@@ -207,20 +204,22 @@ val runIdeForUiTests by intellijPlatformTesting.runIde.registering {
 <tab title="Groovy" group-key="groovy">
 
 ```groovy
-val runIdeForUiTests by intellijPlatformTesting.runIde.registering {
-  task {
-    jvmArgumentProviders.add({
-      [
-        '-Drobot-server.port=8082',
-        '-Dide.mac.message.dialogs.as.sheets=false',
-        '-Djb.privacy.policy.text=<!--999.999-->',
-        '-Djb.consents.confirmation.enabled=false',
-      ]
-    } as CommandLineArgumentProvider)
-  }
+intellijPlatformTesting.runIde {
+  runIdeForUiTests {
+    task {
+      jvmArgumentProviders.add({
+        [
+          '-Drobot-server.port=8082',
+          '-Dide.mac.message.dialogs.as.sheets=false',
+          '-Djb.privacy.policy.text=<!--999.999-->',
+          '-Djb.consents.confirmation.enabled=false',
+        ]
+      } as CommandLineArgumentProvider)
+    }
 
-  plugins {
-    robotServerPlugin()
+    plugins {
+      robotServerPlugin()
+    }
   }
 }
 ```

@@ -6,7 +6,7 @@
 
 <include from="tools_intellij_platform_gradle_plugin.md" element-id="faq"/>
 
-The _IntelliJ Platform Gradle Plugin_ introduces a top-level `intellijPlatformExtension` extension.
+The _IntelliJ Platform Gradle Plugin_ introduces a top-level `intellijPlatformTesting` extension.
 It provides a possibility for registering custom tasks for running the IDE, unit tests, UI tests, or performance tests.
 
 For each of the custom tasks, a dedicated sandbox is created to isolate them form other tasks or the build flow as they may rely on a different IntelliJ Platform version, plugins, or other configuration.
@@ -52,6 +52,8 @@ intellijPlatformTesting {
 
 By default, created tasks depend on the IntelliJ Platform defined with [](tools_intellij_platform_gradle_plugin_dependencies_extension.md).
 However, it is possible to adjust it to any requirements with passing custom values directly to the created object, `task`, or `sandboxTask` task instances.
+
+Each registered entry extends the IntelliJ Platform dependency configuration model, so properties like `type`, `version`, `productMode`, `useInstaller`, `useCache`, and `localPath` can be configured directly on the created object.
 
 **Example:**
 
@@ -134,6 +136,14 @@ Depending on the type of registered object, a different `task` class is availabl
 The `prepareSandboxTask` refers to a dedicated [`PrepareSandboxTask`](tools_intellij_platform_gradle_plugin_tasks.md#prepareSandbox) task instance, connected only with a newly created task.
 The name of this task is based on the name of created task, like `prepareSandbox_[TASK_NAME]`.
 
+### `testFramework(...)`
+
+Adds a dependency on a `test-framework` library variant for the created testing entry.
+
+See also:
+- [Types: `TestFrameworkType`](tools_intellij_platform_gradle_plugin_types.md#TestFrameworkType)
+- [Dependencies Extension: Testing](tools_intellij_platform_gradle_plugin_dependencies_extension.md#testing)
+
 ### `plugins {}`
 
 An extension to provide custom plugins to be added when running the task runtime, or disabling bundled ones.
@@ -178,6 +188,12 @@ intellijPlatformTesting.runIde {
 | `plugin(id, version, channel)` | Adds a dependency on a plugin for a custom IntelliJ Platform.                                                                                |
 | `plugin(notation)`             | Adds a dependency on a plugin for a custom IntelliJ Platform using a string notation:<p>`pluginId:version` or `pluginId:version@channel`</p> |
 | `plugins(notations)`           | Adds dependencies on plugins for a custom IntelliJ Platform using a string notation:<p>`pluginId:version` or `pluginId:version@channel`</p>  |
+| `compatiblePlugin(id)`         | Adds a dependency on a plugin in a version compatible with the custom IntelliJ Platform.                                                     |
+| `compatiblePlugins(ids)`       | Adds dependencies on plugins in versions compatible with the custom IntelliJ Platform.                                                       |
+| `bundledPlugin(id)`            | Adds a dependency on a bundled IntelliJ Platform plugin from the custom target IDE.                                                          |
+| `bundledPlugins(ids)`          | Adds dependencies on bundled IntelliJ Platform plugins from the custom target IDE.                                                           |
+| `bundledModule(id)`            | Adds a dependency on a bundled IntelliJ Platform module from the custom target IDE.                                                          |
+| `bundledModules(ids)`          | Adds dependencies on bundled IntelliJ Platform modules from the custom target IDE.                                                           |
 | `disablePlugin(id)`            | Disables the specific plugin with its ID.                                                                                                    |
 | `disablePlugins(ids)`          | Disables specific plugins with the list of their IDs.                                                                                        |
 | `localPlugin(path)`            | Adds a dependency on a local IntelliJ Platform plugin. Accepts path or a dependency on another module.                                       |

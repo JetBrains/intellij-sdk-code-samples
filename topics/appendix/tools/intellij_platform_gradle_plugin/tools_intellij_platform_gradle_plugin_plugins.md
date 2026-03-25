@@ -23,18 +23,18 @@ flowchart TB
     subgraph PROJECT_LEVEL ["<div style='margin: 5px auto; font-size: 0.8rem'>build.gradle.kts</div>"]
         Platform("<b>Platform</b>")
         Module("<b>Module</b>")
-        Migration
+        GrammarKit("<b>GrammarKit</b>")
         Base
     end
 
     Module --> Base
     Platform --> Module & Base
-    Migration --> Platform
+    GrammarKit --> Base
 
     click Platform "#platform"
     click Module "#module"
     click Settings "#settings"
-    click Migration "#migration"
+    click GrammarKit "#grammarkit"
     click Base "#base"
 
     style Platform stroke-width: 3px
@@ -43,6 +43,9 @@ flowchart TB
     style SETTINGS_LEVEL fill:transparent,stroke:#666,stroke-dasharray: 10 10
     style PROJECT_LEVEL fill:transparent,stroke:#666,stroke-dasharray: 10 10
 ```
+
+The legacy `org.jetbrains.intellij.platform.migration` plugin was removed in `2.12.0`.
+The migration guide remains available as historical reference.
 
 
 ## Platform
@@ -68,10 +71,10 @@ plugins {
 </tab>
 <tab title="Groovy" group-key="groovy">
 
-<path>build.gradle.kts</path>
-```kotlin
+<path>build.gradle</path>
+```groovy
 plugins {
-  id("org.jetbrains.intellij.platform") version "%intellij-platform-gradle-plugin-version%"
+  id 'org.jetbrains.intellij.platform' version '%intellij-platform-gradle-plugin-version%'
 }
 ```
 
@@ -83,6 +86,7 @@ plugins {
 
 [`buildPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#buildPlugin),
 [`buildSearchableOptions`](tools_intellij_platform_gradle_plugin_tasks.md#buildSearchableOptions),
+[`cleanSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#cleanSandbox),
 [`composedJar`](tools_intellij_platform_gradle_plugin_tasks.md#composedJar),
 [`generateManifest`](tools_intellij_platform_gradle_plugin_tasks.md#generateManifest),
 [`initializeIntelliJPlatformPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#initializeIntelliJPlatformPlugin),
@@ -92,12 +96,16 @@ plugins {
 [`patchPluginXml`](tools_intellij_platform_gradle_plugin_tasks.md#patchPluginXml),
 [`prepareSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareSandbox),
 [`prepareTest`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTest),
+[`prepareTestIdePerformanceSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTestIdePerformanceSandbox),
+[`prepareTestSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTestSandbox),
+[`printBundledModules`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledModules),
 [`printBundledPlugins`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledPlugins),
 [`printProductsReleases`](tools_intellij_platform_gradle_plugin_tasks.md#printProductsReleases),
 [`publishPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#publishPlugin),
 [`runIde`](tools_intellij_platform_gradle_plugin_tasks.md#runIde),
 [`setupDependencies`](tools_intellij_platform_gradle_plugin_tasks.md#setupDependencies),
 [`signPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#signPlugin),
+[`test`](tools_intellij_platform_gradle_plugin_tasks.md#test),
 [`testIdePerformance`](tools_intellij_platform_gradle_plugin_tasks.md#testIdePerformance),
 [`testIde`](tools_intellij_platform_gradle_plugin_tasks.md#testIde),
 [`testIdeUi`](tools_intellij_platform_gradle_plugin_tasks.md#testIdeUi),
@@ -116,7 +124,7 @@ plugins {
 
 This plugin applies a smaller set of functionalities for compiling and testing submodules when working in a multi-module architecture.
 
-Compared to the main plugin, it doesn't contain tasks related to publishing or running the IDE for testing purposes.
+Compared to the main plugin, it omits publishing, signing, searchable-options generation, and plugin verification tasks.
 
 
 <tabs group="languages">
@@ -243,6 +251,7 @@ To merge submodule content into the main plugin JAR file, use `pluginComposedMod
 ### Available tasks
 {#module-available-tasks}
 
+[`cleanSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#cleanSandbox),
 [`composedJar`](tools_intellij_platform_gradle_plugin_tasks.md#composedJar),
 [`generateManifest`](tools_intellij_platform_gradle_plugin_tasks.md#generateManifest),
 [`initializeIntelliJPlatformPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#initializeIntelliJPlatformPlugin),
@@ -250,10 +259,15 @@ To merge submodule content into the main plugin JAR file, use `pluginComposedMod
 [`instrumentedJar`](tools_intellij_platform_gradle_plugin_tasks.md#instrumentedJar),
 [`prepareSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareSandbox),
 [`prepareTest`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTest),
+[`prepareTestIdePerformanceSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTestIdePerformanceSandbox),
+[`prepareTestSandbox`](tools_intellij_platform_gradle_plugin_tasks.md#prepareTestSandbox),
+[`printBundledModules`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledModules),
 [`printBundledPlugins`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledPlugins),
 [`printProductsReleases`](tools_intellij_platform_gradle_plugin_tasks.md#printProductsReleases),
 [`setupDependencies`](tools_intellij_platform_gradle_plugin_tasks.md#setupDependencies),
+[`test`](tools_intellij_platform_gradle_plugin_tasks.md#test),
 [`testIde`](tools_intellij_platform_gradle_plugin_tasks.md#testIde),
+[`testIdeUi`](tools_intellij_platform_gradle_plugin_tasks.md#testIdeUi),
 [`verifyPluginProjectConfiguration`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPluginProjectConfiguration)
 
 
@@ -400,19 +414,48 @@ dependencies {
 </tabs>
 
 
-## Migration
-{#migration}
+## GrammarKit
+{#grammarkit}
 
-<link-summary>Plugin is designed to assist in upgrading projects that use Gradle IntelliJ Plugin **1.x** to the **2.x** version.</link-summary>
+<link-summary>Adds GrammarKit and JFlex tasks for generating parsers and lexers.</link-summary>
 
-**Plugin ID: `org.jetbrains.intellij.platform.migration`**
+**Plugin ID: `org.jetbrains.intellij.platform.grammarkit`**
 
-The Migration plugin is designed to assist in upgrading projects that use Gradle IntelliJ Plugin **1.x** to the **2.x** version.
-To prevent Gradle failing due to breaking changes, the `org.jetbrains.intellij.platform.migration` plugin was introduced to fill missing gaps and provide migration hints.
+This plugin applies the [](#base) plugin and adds task support for generating lexers with JFlex and parsers with GrammarKit.
 
-It loads the [](#platform) plugin with additional mocks and checks applied — after the successful migration, the `org.jetbrains.intellij.platform.migration` identifier shoud be replaced with `org.jetbrains.intellij.platform`.
+<tabs group="languages">
+<tab title="Kotlin" group-key="kotlin">
 
-See [](tools_intellij_platform_gradle_plugin_migration.md) for more details.
+<path>build.gradle.kts</path>
+```kotlin
+plugins {
+  id("org.jetbrains.intellij.platform.grammarkit") version "%intellij-platform-gradle-plugin-version%"
+}
+```
+
+</tab>
+<tab title="Groovy" group-key="groovy">
+
+<path>build.gradle</path>
+```groovy
+plugins {
+  id 'org.jetbrains.intellij.platform.grammarkit' version '%intellij-platform-gradle-plugin-version%'
+}
+```
+
+</tab>
+</tabs>
+
+### Available tasks
+{#grammarkit-available-tasks}
+
+[`generateLexer`](tools_intellij_platform_gradle_plugin_tasks.md#generateLexer),
+[`generateParser`](tools_intellij_platform_gradle_plugin_tasks.md#generateParser),
+[`initializeIntelliJPlatformPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#initializeIntelliJPlatformPlugin),
+[`printBundledModules`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledModules),
+[`printBundledPlugins`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledPlugins),
+[`printProductsReleases`](tools_intellij_platform_gradle_plugin_tasks.md#printProductsReleases),
+[`setupDependencies`](tools_intellij_platform_gradle_plugin_tasks.md#setupDependencies)
 
 
 ## Base
@@ -481,6 +524,7 @@ See [](tools_intellij_platform_gradle_plugin_recipes.md) for more details.
 {#base-available-tasks}
 
 [`initializeIntelliJPlatformPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#initializeIntelliJPlatformPlugin),
+[`printBundledModules`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledModules),
 [`printBundledPlugins`](tools_intellij_platform_gradle_plugin_tasks.md#printBundledPlugins),
 [`printProductsReleases`](tools_intellij_platform_gradle_plugin_tasks.md#printProductsReleases),
 [`setupDependencies`](tools_intellij_platform_gradle_plugin_tasks.md#setupDependencies),

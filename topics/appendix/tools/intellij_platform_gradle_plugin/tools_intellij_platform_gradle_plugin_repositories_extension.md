@@ -157,7 +157,7 @@ The third possibility is to use the [](custom_plugin_repository.md) with optiona
 <tab title="Kotlin" group-key="kotlin">
 
 ```kotlin
-import com.jetbrains.plugin.structure.intellij.repository.CustomPluginRepositoryListingType
+import org.jetbrains.intellij.platform.gradle.CustomPluginRepositoryType
 
 repositories {
   intellijPlatform {
