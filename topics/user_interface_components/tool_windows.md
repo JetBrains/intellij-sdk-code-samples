@@ -111,7 +111,7 @@ Showing a balloon notification for a tool window can be done:
 
 ### Events
 
-Project-level topic [`ToolWindowManagerListener`](%gh-ic%/platform/platform-impl/src/com/intellij/openapi/wm/ex/ToolWindowManagerListener.java) allows listening to tool window registration/show events (see [](plugin_listeners.md)).
+Project-level topic [`ToolWindowManagerListener`](%gh-ic%/platform/platform-api/src/com/intellij/openapi/wm/ex/ToolWindowManagerListener.java) allows listening to tool window registration/show events (see [](plugin_listeners.md)).
 
 ## Sample Plugin
 
