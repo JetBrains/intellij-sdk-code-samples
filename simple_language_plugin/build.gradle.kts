@@ -25,7 +25,4 @@ dependencies {
   }
 
   testImplementation("junit:junit:4.13.2")
-  // workaround for <2024.3
-  // https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-faq.html#missing-opentest4j-dependency-in-test-framework
-  testImplementation("org.opentest4j:opentest4j:1.3.0")
 }
