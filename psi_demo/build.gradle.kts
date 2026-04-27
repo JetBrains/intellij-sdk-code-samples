@@ -11,7 +11,3 @@ dependencies {
     bundledPlugin("com.intellij.java")
   }
 }
-
-intellijPlatform {
-  buildSearchableOptions = false
-}

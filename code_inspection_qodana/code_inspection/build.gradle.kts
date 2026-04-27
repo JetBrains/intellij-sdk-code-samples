@@ -13,7 +13,3 @@ dependencies {
     bundledPlugin("org.jetbrains.kotlin")
   }
 }
-
-intellijPlatform {
-  buildSearchableOptions = false
-}
