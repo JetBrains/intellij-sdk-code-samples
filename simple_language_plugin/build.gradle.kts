@@ -3,11 +3,8 @@ import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 plugins {
   id("java")
-  id("org.jetbrains.intellij.platform") version "2.14.0"
+  id("org.jetbrains.intellij.platform")
 }
-
-group = "org.intellij.sdk"
-version = "2.0.0"
 
 // Include the generated files in the source set
 sourceSets {
@@ -15,14 +12,6 @@ sourceSets {
     java {
       srcDirs("src/main/gen")
     }
-  }
-}
-
-repositories {
-  mavenCentral()
-
-  intellijPlatform {
-    defaultRepositories()
   }
 }
 
@@ -43,15 +32,4 @@ dependencies {
 
 intellijPlatform {
   buildSearchableOptions = false
-
-  pluginConfiguration {
-    ideaVersion {
-      sinceBuild = "252"
-    }
-  }
-  pluginVerification  {
-    ides {
-      recommended()
-    }
-  }
 }
