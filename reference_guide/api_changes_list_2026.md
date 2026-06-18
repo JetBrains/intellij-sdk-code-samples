@@ -114,70 +114,189 @@ If a plugin depends on specific Java plugin modules directly, the dependencies s
 
 #### K1 Plugin Removal
 
-K1 Plugin was completely removed from the distribution. Any access to its classes or to the classes of the K1 Compiler Frontend would lead to runtime errors.
-The migration should be done according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html). 
+K1 Plugin was completely removed from the distribution.
+Any access to its classes or to the classes of the K1 Compiler Frontend would lead to runtime errors.
+The migration should be done according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
 
-Classes known to be used by plugins:
-- `org.jetbrains.kotlin.asJava.classes.KtLightClassForSourceDeclaration` class removed
-- `org.jetbrains.kotlin.asJava.classes.KtLightClassImpl` class removed
-- `org.jetbrains.kotlin.asJava.classes.KtUltraLightClass` class removed
-- `org.jetbrains.kotlin.asJava.elements.KtLightMemberImpl` class removed
-- `org.jetbrains.kotlin.asJava.elements.KtLightPsiLiteral` class removed
-- `org.jetbrains.kotlin.idea.actions.generate.KotlinGenerateMemberActionBase` class removed
-- `org.jetbrains.kotlin.idea.base.projectStructure.moduleInfo.ModuleSourceInfo` class removed
-- `org.jetbrains.kotlin.idea.base.utils.fqname.FqNameUtilKt` class removed
-- `org.jetbrains.kotlin.idea.caches.project.MultiplatformUtilKt` class removed
-- `org.jetbrains.kotlin.idea.caches.resolve.util.JavaResolutionUtils` class removed
-- `org.jetbrains.kotlin.idea.codeInsight.DescriptorToSourceUtilsIde` class removed
-- `org.jetbrains.kotlin.idea.codeInsight.KtFunctionPsiElementCellRenderer` class removed
-- `org.jetbrains.kotlin.idea.codeInsight.ReferenceVariantsHelper` class removed
-- `org.jetbrains.kotlin.idea.codeInsight.postfix.KtPostfixTemplateProviderKt` class removed
-- `org.jetbrains.kotlin.idea.core.ShortenReferences` class removed
-- `org.jetbrains.kotlin.idea.core.UtilsKt` class removed
-- `org.jetbrains.kotlin.idea.core.overrideImplement.GenerateMembersHandler` class removed
-- `org.jetbrains.kotlin.idea.core.overrideImplement.GenerateMembersHandler.Companion` class removed
-- `org.jetbrains.kotlin.idea.core.overrideImplement.ImplementMembersHandler` class removed
-- `org.jetbrains.kotlin.idea.core.overrideImplement.OverrideMemberChooserObject` class removed
-- `org.jetbrains.kotlin.idea.gradleJava.compilerPlugin.AbstractCompilerPluginGradleImportHandler` class removed
-- `org.jetbrains.kotlin.idea.imports.ImportsUtils` class removed
-- `org.jetbrains.kotlin.idea.inspections.IntentionBasedInspectionKt` class removed
-- `org.jetbrains.kotlin.idea.quickfix.KotlinIntentionActionsFactory` class removed
-- `org.jetbrains.kotlin.idea.quickfix.KotlinQuickFixAction` class removed
-- `org.jetbrains.kotlin.idea.quickfix.KotlinSingleIntentionActionFactory` class removed
-- `org.jetbrains.kotlin.idea.quickfix.QuickFixContributor` class removed
-- `org.jetbrains.kotlin.idea.quickfix.QuickFixes` class removed
-- `org.jetbrains.kotlin.idea.quickfix.createFromUsage.CreateFromUsageFixBase` class removed
-- `org.jetbrains.kotlin.idea.refactoring.KotlinRefactoringUtilKt` class removed
-- `org.jetbrains.kotlin.idea.refactoring.changeSignature.ChangeSignatureUtilsKt` class removed
-- `org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinChangeInfo` class removed
-- `org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinChangeSignatureData` class removed
-- `org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinMethodDescriptor` class removed
-- `org.jetbrains.kotlin.idea.refactoring.memberInfo.MemberInfoUtilsKt` class removed
-- `org.jetbrains.kotlin.idea.refactoring.safeDelete.KotlinSafeDeleteProcessor` class removed
-- `org.jetbrains.kotlin.idea.search.usagesSearch.SearchHelpersKt` class removed
-- `org.jetbrains.kotlin.idea.search.usagesSearch.UtilsKt` class removed
-- `org.jetbrains.kotlin.idea.util.CallTypeAndReceiver` class removed
-- `org.jetbrains.kotlin.idea.util.IdeDescriptorRenderers` class removed
-- `org.jetbrains.kotlin.idea.util.ImportInsertHelper` class removed
-- `org.jetbrains.kotlin.idea.util.ImportInsertHelper.Companion` class removed
-- `org.jetbrains.kotlin.idea.util.ModifierListModifactorKt` class removed
-- `org.jetbrains.kotlin.idea.util.TypeUtils` class removed
-- `org.jetbrains.kotlin.j2k.UtilsKt` class removed
-- `org.jetbrains.kotlin.resolve.lazy.BodyResolveMode` class removed
-- `org.jetbrains.kotlin.util.DescriptorUtilsKt` class removed
+`org.jetbrains.kotlin.asJava.classes.KtLightClassForSourceDeclaration` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
 
-Methods known to be used by plugins:
-- `org.jetbrains.kotlin.asJava.KotlinAsJavaSupport.getLightClass(KtClassOrObject) : KtLightClass` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.analyze$default(KtElement, BodyResolveMode, int, Object) : BindingContext` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.analyze(KtElement, BodyResolveMode) : BindingContext` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.getResolutionFacade(KtElement) : ResolutionFacade` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveImportReference(KtFile, FqName) : Collection` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToCall$default(KtElement, BodyResolveMode, int, Object) : ResolvedCall` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtClassOrObject, BodyResolveMode, int, Object) : ClassDescriptor` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtDeclaration, BodyResolveMode, int, Object) : DeclarationDescriptor` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtNamedFunction, BodyResolveMode, int, Object) : FunctionDescriptor` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtProperty, BodyResolveMode, int, Object) : VariableDescriptor` method removed
-- `org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny(KtDeclaration, BodyResolveMode) : DeclarationDescriptor` method removed
-- `org.jetbrains.kotlin.idea.util.CommentSaver.restore$default(CommentSaver, PsiElement, boolean, int, Object) : void` method removed
-- `org.jetbrains.kotlin.js.descriptorUtils.DescriptorUtilsKt.getJetTypeFqName(KotlinType, boolean) : String` method removed
-- `org.jetbrains.kotlin.js.descriptorUtils.DescriptorUtilsKt.getNameIfStandardType(KotlinType) : Name` method removed
+`org.jetbrains.kotlin.asJava.classes.KtLightClassImpl` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.asJava.classes.KtUltraLightClass` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.asJava.elements.KtLightMemberImpl` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.asJava.elements.KtLightPsiLiteral` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.actions.generate.KotlinGenerateMemberActionBase` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.base.projectStructure.moduleInfo.ModuleSourceInfo` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.base.utils.fqname.FqNameUtilKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.project.MultiplatformUtilKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.util.JavaResolutionUtils` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.codeInsight.DescriptorToSourceUtilsIde` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.codeInsight.KtFunctionPsiElementCellRenderer` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.codeInsight.ReferenceVariantsHelper` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.codeInsight.postfix.KtPostfixTemplateProviderKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.ShortenReferences` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.UtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.overrideImplement.GenerateMembersHandler` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.overrideImplement.GenerateMembersHandler.Companion` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.overrideImplement.ImplementMembersHandler` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.core.overrideImplement.OverrideMemberChooserObject` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.gradleJava.compilerPlugin.AbstractCompilerPluginGradleImportHandler` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.imports.ImportsUtils` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.inspections.IntentionBasedInspectionKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.KotlinIntentionActionsFactory` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.KotlinQuickFixAction` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.KotlinSingleIntentionActionFactory` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.QuickFixContributor` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.QuickFixes` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.quickfix.createFromUsage.CreateFromUsageFixBase` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.KotlinRefactoringUtilKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.changeSignature.ChangeSignatureUtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinChangeInfo` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinChangeSignatureData` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.changeSignature.KotlinMethodDescriptor` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.memberInfo.MemberInfoUtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.refactoring.safeDelete.KotlinSafeDeleteProcessor` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.search.usagesSearch.SearchHelpersKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.search.usagesSearch.UtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.CallTypeAndReceiver` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.IdeDescriptorRenderers` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.ImportInsertHelper` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.ImportInsertHelper.Companion` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.ModifierListModifactorKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.TypeUtils` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.j2k.UtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.resolve.lazy.BodyResolveMode` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.util.DescriptorUtilsKt` class removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.asJava.KotlinAsJavaSupport.getLightClass(KtClassOrObject)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.analyze$default(KtElement, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.analyze(KtElement, BodyResolveMode)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.getResolutionFacade(KtElement)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveImportReference(KtFile, FqName)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToCall$default(KtElement, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtClassOrObject, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtDeclaration, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtNamedFunction, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny$default(KtProperty, BodyResolveMode, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.caches.resolve.ResolutionUtils.resolveToDescriptorIfAny(KtDeclaration, BodyResolveMode)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.idea.util.CommentSaver.restore$default(CommentSaver, PsiElement, boolean, int, Object)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.js.descriptorUtils.DescriptorUtilsKt.getJetTypeFqName(KotlinType, boolean)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
+
+`org.jetbrains.kotlin.js.descriptorUtils.DescriptorUtilsKt.getNameIfStandardType(KotlinType)` method removed
+: Migrate to K2 (Analysis API) according to the [migration guide](https://kotlin.github.io/analysis-api/migrating-from-k1.html).
