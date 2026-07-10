@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2024 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 # Alternatives to Implementing a Plugin
 
@@ -9,19 +9,6 @@ If you need a functionality that is specific to your project domain, conventions
 
 Before you start the IntelliJ Platform plugin development, define your requirements and verify if they can be covered with any of the alternatives described below.
 Consider implementing an actual plugin only when the described solutions are insufficient in your case and there is a significant number of developers who can benefit from it.
-
-## Kotlin Notebook Integration
-<primary-label ref="2025.2"/>
-
-[](tools_kotlin_notebook.md) offers an interactive environment for testing IntelliJ Platform APIs directly within your IDE. By declaring `%use intellij-platform` in a notebook cell and switching to "Run in IDE Process" mode, you can run IntelliJ Platform code within the active IDE runtime without needing to create a full plugin project.
-
-This integration is especially helpful for:
-- Quickly prototyping IDE features and UI components
-- Testing platform APIs and behaviors
-- Building interactive documentation and tutorials
-- Trying out plugin ideas before formal development
-
-The notebook environment provides direct access to the IntelliJ Platform APIs, UI rendering features, resource management via the Disposer mechanism, and the ability to load and interact with installed plugins.
 
 ## Structural Search and Replace Inspections
 
@@ -78,3 +65,19 @@ Additionally, if they are stored in a project's <path>.live-plugins</path> direc
 [PhpStorm](https://www.jetbrains.com/phpstorm/) supports special [metadata files](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) describing the behavior of methods and functions.
 This information is used for using the existing IDE features such as code completion, navigation, finding usages, and others.
 The metadata files can be [part of project files](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html#create-metadata-files-inside-your-project), which makes it easy to share it between team members via version control.
+
+## Kotlin Notebook Integration
+<primary-label ref="2025.2"/>
+
+<include from="tools_kotlin_notebook.md" element-id="kotlinNotebookSunset"/>
+
+[](tools_kotlin_notebook.md) offers an interactive environment for testing IntelliJ Platform APIs directly within your IDE.
+By declaring `%use intellij-platform` in a notebook cell and switching to "Run in IDE Process" mode, you can run IntelliJ Platform code within the active IDE runtime without needing to create a full plugin project.
+
+This integration is especially helpful for:
+- Quickly prototyping IDE features and UI components
+- Testing platform APIs and behaviors
+- Building interactive documentation and tutorials
+- Trying out plugin ideas before formal development
+
+The notebook environment provides direct access to the IntelliJ Platform APIs, UI rendering features, resource management via the Disposer mechanism, and the ability to load and interact with installed plugins.

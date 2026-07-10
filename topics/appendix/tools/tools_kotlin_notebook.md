@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2025 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license found in the LICENSE file. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license found in the LICENSE file. -->
 
 # Kotlin Notebook Integration
 
@@ -14,6 +14,15 @@
 **JetBrains Platform Forum**: [Kotlin Notebook](https://platform.jetbrains.com/c/intellij-platform/kotlin-notebook/25) category
 
 </tldr>
+
+<snippet id="kotlinNotebookSunset">
+
+> Kotlin Notebook is being sunset starting from IntelliJ IDEA 2026.2.
+> See the [blog post](https://blog.jetbrains.com/idea/2026/06/kotlin-notebook-sunset/) for more details.
+>
+{style="warning"}
+
+</snippet>
 
 The Kotlin Notebook IntelliJ Platform integration enables interactive development and experimentation with IntelliJ Platform APIs directly within a notebook environment. This integration allows developers to run IntelliJ Platform code within the active IDE runtime, removing traditional barriers associated with plugin project setup, compilation, and deployment.
 
