@@ -2,7 +2,7 @@
 
 # Integration Tests: API Interaction
 
-<primary-label ref="2023.2"/>
+<primary-label ref="2024.2"/>
 
 <link-summary>Walkthrough how to interact with API in integration tests.</link-summary>
 
@@ -155,13 +155,12 @@ fun testStubs() {
   Starter.newContext(
     "testExample",
     TestCase(
-      IdeProductProvider.IC,
+      IdeInfo.IdeaUltimate,
       GitHubProject.fromGithub(
         branchName = "master",
         repoRelativeUrl = "JetBrains/ij-perf-report-aggregator"
       )
     )
-      .withVersion("2024.3")
   )
     .apply {
       val pathToPlugin = System.getProperty("path.to.build.plugin")
