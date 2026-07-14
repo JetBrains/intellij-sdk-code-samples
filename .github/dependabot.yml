@@ -12,6 +12,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
+    directory: "/code_samples/code_inspection_qodana/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
     directory: "/code_samples/comparing_string_references_inspection/"
     schedule:
       interval: "daily"
@@ -41,6 +45,10 @@ updates:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/module/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
+    directory: "/code_samples/oauth2/"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
