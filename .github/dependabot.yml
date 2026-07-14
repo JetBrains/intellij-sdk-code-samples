@@ -9,81 +9,121 @@ updates:
   # Maintain dependencies for Gradle dependencies
   - package-ecosystem: "gradle"
     directory: "/code_samples/action_basics/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/code_inspection_qodana/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/comparing_string_references_inspection/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/conditional_operator_intention/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/editor_basics/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/facet_basics/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/framework_basics/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/live_templates/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/max_opened_projects/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/module/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/oauth2/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/project_model/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/project_view_pane/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/project_wizard/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/psi_demo/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/run_configuration/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/settings/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/simple_language_plugin/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/tool_window/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
     directory: "/code_samples/tree_structure_provider/"
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.jvm"
     schedule:
       interval: "daily"
