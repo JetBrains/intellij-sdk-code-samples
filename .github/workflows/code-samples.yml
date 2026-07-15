@@ -16,7 +16,7 @@ jobs:
       matrix:
         plugin:
           - action_basics
-#          - code_inspection_qodana/code_inspection # inentionally disabled due to no space left on device errors
+          - code_inspection_qodana/code_inspection
           - comparing_string_references_inspection
           - conditional_operator_intention
           - editor_basics
