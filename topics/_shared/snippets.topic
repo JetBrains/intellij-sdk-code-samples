@@ -84,9 +84,6 @@
                 <def id="java_2024.2" title="2024.2+">
                     Java 21
                 </def>
-                <def id="java_2022.3" title="2022.3+">
-                    Java 17
-                </def>
             </deflist>
         </note>
     </snippet>
