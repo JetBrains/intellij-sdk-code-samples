@@ -1583,7 +1583,7 @@ See also:
 - [Tasks: `verifyPlugin`](tools_intellij_platform_gradle_plugin_tasks.md#verifyPlugin)
 - [Types: `IntelliJPlatformType`](tools_intellij_platform_gradle_plugin_types.md#IntelliJPlatformType)
 - [Types: `ProductRelease.Channel`](tools_intellij_platform_gradle_plugin_types.md#ProductRelease-Channel)
-- [Types: `ProductReleasesValueSource.FilterParameters`](tools_intellij_platform_gradle_plugin_types.md#ProductReleasesValueSource-FilterParameters)
+- [Types: `ProductReleasesValueSource.FilterParameters`](tools_intellij_platform_gradle_plugin_types.md#ProductReleasesFilterParameters)
 
 | Function            | Description                                                                                                                                                                                         |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1592,7 +1592,7 @@ See also:
 | `current()`         | Adds the currently targeted IntelliJ Platform to the verification IDE list.                                                                                                                         |
 | `latest(configure)` | Resolves the latest available IDE release for each selected type.                                                                                                                                   |
 | `recommended()`     | Retrieves matching IDEs using the default configuration based on the currently used IntelliJ Platform and applies them for IntelliJ Plugin Verifier.                                                |
-| `select(configure)` | Retrieves matching IDEs using custom [`ProductReleasesValueSource.FilterParameters`](tools_intellij_platform_gradle_plugin_types.md#ProductReleasesValueSource-FilterParameters) filter parameters. |
+| `select(configure)` | Retrieves matching IDEs using custom [`ProductReleasesValueSource.FilterParameters`](tools_intellij_platform_gradle_plugin_types.md#ProductReleasesFilterParameters) filter parameters. |
 
 Provider-based IDE lists can use `orRecommended()` to fall back to the default recommended IDE list when the provider has no value.
 
