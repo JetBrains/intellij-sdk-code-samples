@@ -2,7 +2,7 @@
 
 <!-- GENERATED FILE, DO NOT EDIT -->
 <!-- This file is generated with the SDK Docs Authoring Tools plugin ('Generate SDK Docs EP Lists' action) -->
-<!-- Revision: 14a114c7e7fd4f9be930f20c5d7ffbe0964c5ae0 -->
+<!-- Revision: 9db502cc722e2a68f4537c401575a8862f18923a -->
 
 <!--
 EP List Directories:
@@ -12,7 +12,7 @@ EP List Directories:
 
 <snippet id="content">
 
-66 Extension Points and 6 Listeners
+67 Extension Points and 6 Listeners
 
 <include from="snippets.topic" element-id="ep_list_legend"/>
 
@@ -23,14 +23,14 @@ EP List Directories:
 | Topic | Listener |
 |-------|----------|
 | [`SpringFileSetService#TOPIC`](https://jb.gg/ipe/listeners?topics=com.intellij.spring.facet.SpringFileSetService.SpringFileSetListener)  | `SpringFileSetListener` |
-| [`SpringBeansViewSettings#TOPIC`](https://jb.gg/ipe/listeners?topics=com.intellij.spring.toolWindow.SpringBeansViewSettings.Listener)  | `Listener` |
+| [`SpringBeansViewSettings#TOPIC`](https://jb.gg/ipe/listeners?topics=com.intellij.spring.ide.ux.toolWindow.SpringBeansViewSettings.Listener)  | `Listener` |
 
 
-### intellij.spring.core.xml
+### intellij.spring.core.analysis.services.xml
 
 | Extension Point | Implementation |
 |-----------------|----------------|
-| <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.autodetected.filesets"/></include> | `SpringAutodetectedFilesetsSearcher` |
+| <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.additionalBeanGutterDeclarationsContributor"/></include> | `AdditionalSpringBeanGutterDeclarationsContributor` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.autodetected.models"/></include> | `SpringAutodetectedModelsSearcher` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.beanClassLineMarker"/></include> | `BeanClassLineMarker` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.beans.stereotype"/></include> | `SpringBeanStereotype` |
@@ -63,6 +63,12 @@ EP List Directories:
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.testingImplicitContextsProvider"/></include> | `SpringTestingImplicitContextsProvider` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.valueConverter"/></include> | `SpringValueConvertersProvider` |
 
+### intellij.spring.core.xml
+
+| Extension Point | Implementation |
+|-----------------|----------------|
+| <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.autodetected.filesets"/></include> | `SpringAutodetectedFilesetsSearcher` |
+
 ### intellij.spring.el.xml
 
 | Extension Point | Implementation |
@@ -83,7 +89,7 @@ EP List Directories:
 
 | Topic | Listener |
 |-------|----------|
-| [`SpringBootEndpointsTabSettings#TOPIC`](https://jb.gg/ipe/listeners?topics=com.intellij.spring.boot.run.lifecycle.tabs.SpringBootEndpointsTabSettings.Listener)  | `Listener` |
+| [`SpringBootEndpointsTabSettings#TOPIC`](https://jb.gg/ipe/listeners?topics=com.intellij.spring.boot.run.api.lifecycle.tabs.SpringBootEndpointsTabSettings.Listener)  | `Listener` |
 
 
 ### intellij.spring.boot.core.xml
@@ -91,9 +97,9 @@ EP List Directories:
 | Extension Point | Implementation |
 |-----------------|----------------|
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.configFileDetector"/></include> | `SpringBootConfigFileDetector` |
+| <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.configKeyDescriptionExtractor"/></include> | `SpringBootConfigKeyDescriptionExtractor` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.configUnresolvedClassReferenceFixesProvider"/></include> | `SpringBootConfigUnresolvedClassReferenceFixesProvider` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.customHintReferenceProvider"/></include> | `SpringBootCustomHintReferenceProvider` |
-| <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.importsManager"/></include> | `SpringBootImportsManager` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.languageSpecificBridge"/></include> | `SpringBootLanguageSpecificBridge` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.modelConditionalContributor"/></include> | `ConditionalContributor` |
 | <include from="snippets.topic" element-id="epLink"><var name="ep" value="com.intellij.spring.boot.modelConfigFileContributor"/></include> | `SpringBootModelConfigFileContributor` |

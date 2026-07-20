@@ -2,7 +2,7 @@
 
 <!-- GENERATED FILE, DO NOT EDIT -->
 <!-- This file is generated with the SDK Docs Authoring Tools plugin ('Generate SDK Docs EP Lists' action) -->
-<!-- Revision: 14a114c7e7fd4f9be930f20c5d7ffbe0964c5ae0 -->
+<!-- Revision: 9db502cc722e2a68f4537c401575a8862f18923a -->
 
 <!--
 EP List Directories:
@@ -26,9 +26,9 @@ EP List Directories:
 | [`StatefulButtonNotifier#BUTTON_STATE_TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.assistant.StatefulButtonNotifier)  ![Project-Level][project-level] | [`StatefulButtonNotifier`](%gh-ij-android%/assistant/src/com/android/tools/idea/assistant/StatefulButtonNotifier.java) |
 | [`TutorialCardRefreshNotifier#TUTORIAL_CARD_TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.assistant.TutorialCardRefreshNotifier)  | [`TutorialCardRefreshNotifier`](%gh-ij-android%/assistant/src/com/android/tools/idea/assistant/TutorialCardRefreshNotifier.java) |
 | [`EmulatorLogListener.Companion#TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.avdmanager.EmulatorLogListener)  | [`EmulatorLogListener`](%gh-ij-android%/android/src/com/android/tools/idea/avdmanager/EmulatorLogListener.kt) |
-| [`IssueProviderListener#TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.common.error.IssueProviderListener)  ![Project-Level][project-level] | [`IssueProviderListener`](%gh-ij-android%/designer/src/com/android/tools/idea/common/error/IssueProvider.kt) |
 | [`IssueProviderListener#UI_CHECK`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.common.error.IssueProviderListener)  ![Project-Level][project-level] | [`IssueProviderListener`](%gh-ij-android%/designer/src/com/android/tools/idea/common/error/IssueProvider.kt) |
-| [`ComposeAnimationListener.Companion#TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.compose.preview.ComposePreviewRepresentation.ComposeAnimationListener)  | [`ComposeAnimationListener`](%gh-ij-android%/compose-designer/src/com/android/tools/idea/compose/preview/Preview.kt) |
+| [`IssueProviderListener#TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.common.error.IssueProviderListener)  ![Project-Level][project-level] | [`IssueProviderListener`](%gh-ij-android%/designer/src/com/android/tools/idea/common/error/IssueProvider.kt) |
+| [`ComposeAnimationListener.Companion#TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.compose.preview.ComposePreviewRepresentation.ComposeAnimationListener)  | [`ComposeAnimationListener`](%gh-ij-android%/compose-designer/src/com/android/tools/idea/compose/preview/ComposePreviewRepresentation.kt) |
 | [`FastPreviewManager#FAST_PREVIEW_MANAGER_TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.editors.fast.FastPreviewManager.Companion.FastPreviewManagerListener)  | [`FastPreviewManagerListener`](%gh-ij-android%/android/src/com/android/tools/idea/editors/fast/FastPreviewManager.kt) |
 | [`GradleBuildState#GRADLE_BUILD_TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.gradle.project.build.GradleBuildListener)  | [`GradleBuildListener`](%gh-ij-android%/project-system-gradle/src/com/android/tools/idea/gradle/project/build/GradleBuildListener.java) |
 | [`GradleSyncStateImplKt#GRADLE_SYNC_TOPIC`](https://jb.gg/ipe/listeners?topics=com.android.tools.idea.gradle.project.sync.GradleSyncListenerWithRoot)  | [`GradleSyncListenerWithRoot`](%gh-ij-android%/project-system-gradle/src/com/android/tools/idea/gradle/project/sync/GradleSyncListenerWithRoot.kt) |

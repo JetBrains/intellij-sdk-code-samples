@@ -1,4 +1,4 @@
-<!-- Copyright 2000-2025 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Copyright 2000-2026 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
 
 #  Embedded Browser (JCEF)
 
@@ -234,7 +234,7 @@ They can be made accessible by implementing proper request [handlers](#event-han
 This approach requires implementing [`CefRequestHandler`](%gh-jcef-master%/org/cef/handler/CefRequestHandler.java), and [`CefResourceRequestHandler`](%gh-jcef-master%/org/cef/handler/CefResourceRequestHandler.java), which map resource paths to resource providers.
 
 Serving such resources is implemented by the Image Viewer component responsible for displaying SVG files in IntelliJ Platform-based IDEs.
-See [`JCefImageViewer`](%gh-ic%/images/src/org/intellij/images/editor/impl/jcef/JCefImageViewer.kt) and related classes for the implementation details.
+See [`JCefImageViewer`](%gh-ic%/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt) and related classes for the implementation details.
 
 ### Scrollbars Look and Feel
 
@@ -285,8 +285,8 @@ To open DevTools in a separate window, call `JBCefBrowser.openDevtools()`.
 
 ## JCEF Usage Examples
 
-- [Markdown preview panel](%gh-ic%/plugins/markdown/core/src/org/intellij/plugins/markdown/ui/preview/jcef/MarkdownJCEFHtmlPanel.kt)
-- [SVG Image Viewer](%gh-ic%/images/src/org/intellij/images/editor/impl/jcef/JCefImageViewer.kt)
+- [Markdown preview panel](%gh-ic%/plugins/markdown/jcef/src/com/intellij/markdown/jcef/preview/MarkdownJCEFHtmlPanel.kt)
+- [SVG Image Viewer](%gh-ic%/images/jcef/src/com/intellij/platform/images/jcef/JCefImageViewer.kt)
 - [PDF Viewer](https://github.com/FirstTimeInForever/intellij-pdf-viewer) plugin
 - [Excalidraw Integration](https://github.com/bric3/excalidraw-jetbrains-plugin) plugin
 - [Creating IntelliJ plugin with WebView](https://medium.com/virtuslab/creating-intellij-plugin-with-webview-3b27c3f87aea) blog post
