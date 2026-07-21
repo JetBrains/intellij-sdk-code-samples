@@ -28,4 +28,4 @@ Install and enable [Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-gramm
 
 ## Create a Project
 
-Create an empty [IntelliJ Platform Plugin project](creating_plugin_project.md) or start using [](plugin_github_template.md) when creating a plugin hosted on GitHub.
+Create an empty [IntelliJ Platform Plugin project](creating_plugin_project.md).

@@ -1,6 +1,6 @@
 <!-- Copyright 2000-2025 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
 
-# Configuring IntelliJ Platform Gradle Plugin (2.x)
+# Configuring IntelliJ Platform Gradle Plugin
 
 <web-summary>Essential configuration and tasks for IntelliJ Platform Gradle Plugin (2.x) plugin projects.</web-summary>
 <link-summary>Configuring the essential IntelliJ Platform Gradle Plugin (2.x) attributes and tasks.</link-summary>

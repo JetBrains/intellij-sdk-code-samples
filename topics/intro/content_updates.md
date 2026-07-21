@@ -15,6 +15,9 @@ See [GitHub Changelog](https://github.com/JetBrains/intellij-sdk-docs/commits/ma
 ### July
 {#july-26}
 
+Creating a Plugin Project
+: [](creating_plugin_project.md) section has been revamped to describe the newest plugin creation workflow using the IDE Plugin generator.
+
 Error Reporting
 : Add a new page with details about [](error_reporting.md).
 
@@ -558,7 +561,7 @@ Dynamic Plugins update
 : Added new sections _Code_ and _Troubleshooting_ to [Dynamic Plugins](dynamic_plugins.md).
 
 GitHub IntelliJ Platform Plugin Template
-: Create new plugins with a preconfigured project scaffold and CI in [one click](plugin_github_template.md).
+: Create new plugins with a preconfigured project scaffold and CI in [one click](https://github.com/JetBrains/intellij-platform-plugin-template).
 
 Disposer & Disposable
 : Added [reference](disposers.md) discussing resource cleanup/management.

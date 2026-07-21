@@ -87,7 +87,7 @@ intellij {
 }
 ```
 
-For projects based on the [](plugin_github_template.md), update the Gradle IntelliJ Plugin to the latest version,
+For projects based on the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template), update the Gradle IntelliJ Plugin to the latest version,
 and amend the values in <path>gradle.properties</path> accordingly.
 
 </tab>

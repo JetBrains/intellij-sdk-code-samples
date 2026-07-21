@@ -4,16 +4,6 @@
 
 <link-summary>Advantages and required configuration for developing a plugin in Kotlin.</link-summary>
 
-<tldr>
-
-**Homepage**: [Kotlin](https://kotlinlang.org)
-
-**Project Template**: [](plugin_github_template.md)
-
-</tldr>
-
-<link-summary>Developing plugins using or targeting the Kotlin programming language.</link-summary>
-
 This page describes developing plugins using the [Kotlin](https://kotlinlang.org) programming language.
 
 > To implement a plugin _operating_ on Kotlin code ([PSI](psi.md)) in the IDE, see [](idea.md#kotlin-plugin).
@@ -77,7 +67,7 @@ The IntelliJ Platform provides a [type-safe DSL](kotlin_ui_dsl_version_2.md) to 
 
 ## Adding Kotlin Support
 
-> The [](plugin_github_template.md) provides a preconfigured project using Kotlin.
+> [IDE Plugin generator](creating_plugin_project.md#create-ide-plugin) adds the Kotlin support by default, and no additional configuration is required in most cases.
 
 IntelliJ IDEA bundles the necessary Kotlin IDE plugin, requiring no further configuration.
 For detailed instructions, refer to the [Kotlin documentation](https://kotlinlang.org/docs/getting-started.html).
