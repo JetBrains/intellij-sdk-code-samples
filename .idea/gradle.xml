@@ -67,6 +67,11 @@
                   <project path="$PROJECT_DIR$/code_samples/module" />
                 </projects>
               </build>
+              <build path="$PROJECT_DIR$/code_samples/oauth2" name="oauth2">
+                <projects>
+                  <project path="$PROJECT_DIR$/code_samples/oauth2" />
+                </projects>
+              </build>
               <build path="$PROJECT_DIR$/code_samples/project_model" name="project_model">
                 <projects>
                   <project path="$PROJECT_DIR$/code_samples/project_model" />
@@ -132,6 +137,7 @@
             <option value="$PROJECT_DIR$/code_samples/live_templates" />
             <option value="$PROJECT_DIR$/code_samples/max_opened_projects" />
             <option value="$PROJECT_DIR$/code_samples/module" />
+            <option value="$PROJECT_DIR$/code_samples/oauth2" />
             <option value="$PROJECT_DIR$/code_samples/project_model" />
             <option value="$PROJECT_DIR$/code_samples/project_view_pane" />
             <option value="$PROJECT_DIR$/code_samples/project_wizard" />
