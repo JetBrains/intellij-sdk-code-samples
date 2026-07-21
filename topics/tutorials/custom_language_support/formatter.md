@@ -67,7 +67,7 @@ The ``SimpleFormattingModelBuilder` implementation is registered with the Intell
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Open the example Simple Language [properties file](lexer_and_parser_definition.md#run-the-project) in the IDE Development Instance.
 Add some extra spaces around the `=` separator between `language` and `English`.

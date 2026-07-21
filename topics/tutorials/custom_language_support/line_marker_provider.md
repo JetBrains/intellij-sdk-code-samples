@@ -97,7 +97,7 @@ the <include from="snippets.topic" element-id="ep"><var name="ep" value="com.int
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Open the Java [Test file](annotator.md#run-the-project).
 Now the icon appears next to line 3 on the gutter.

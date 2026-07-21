@@ -65,7 +65,7 @@ the <include from="snippets.topic" element-id="ep"><var name="ep" value="com.int
 
 ## Run the Project
 
-Run the project by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Open the <path>test.simple</path> file and open <ui-path>View | Tool Windows | Structure</ui-path>.
 The IDE now supports a structure view of the Simple Language:

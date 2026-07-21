@@ -44,7 +44,7 @@ the <include from="snippets.topic" element-id="ep"><var name="ep" value="com.int
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 The IDE now supports [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html) for any property with a reference:
 

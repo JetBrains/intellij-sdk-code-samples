@@ -41,7 +41,7 @@ The `SimpleCompletionContributor` implementation is registered in the plugin con
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Open the [`test.simple`](lexer_and_parser_definition.md#run-the-project) file.
 Erase the property "English" and invoke [Basic Code Completion](https://www.jetbrains.com/help/idea/auto-completing-code.html#invoke-basic-completion).

@@ -76,7 +76,7 @@ To make your changes visible from the UI, implement a new run configuration.
 
 <procedure>
 
-1. [Execute](creating_plugin_project.md#executing-the-plugin) the plugin.
+1. [Run](creating_plugin_project.md#running-the-plugin) the plugin.
 2. Go to <ui-path>Run \| Edit Configurations...</ui-path>, click to <control>Add</control> button (<control>+</control> icon), and select <control>Demo</control>.
 3. In the <control>Script file</control> field provide the path to an example script (e.g. displaying "Hello world" message).
 4. Click the <control>Apply</control> button and close the dialog.

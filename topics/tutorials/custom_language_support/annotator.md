@@ -72,7 +72,7 @@ Using the <include from="snippets.topic" element-id="ep"><var name="ep" value="c
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 As a test, define the following Java file containing a Simple Language `prefix:value` pair:
 

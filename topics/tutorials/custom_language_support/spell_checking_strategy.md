@@ -38,7 +38,7 @@ configuration file using the <include from="snippets.topic" element-id="ep"><var
 
 ## Run the Project
 
-Run the project by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Open the <path>test.simple</path> file and make an intentional spelling mistake.
 The IDE will highlight the error and suggest a quick fix.

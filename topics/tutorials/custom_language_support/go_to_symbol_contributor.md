@@ -72,7 +72,7 @@ using the <include from="snippets.topic" element-id="ep"><var name="ep" value="c
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 The IDE now supports navigating to a property definition by name pattern via <ui-path>Navigate | Symbol</ui-path> action.
 

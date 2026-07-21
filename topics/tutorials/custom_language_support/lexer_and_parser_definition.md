@@ -97,7 +97,7 @@ For example, see <path>simple_language_plugin/src/main/resources/META-INF/plugin
 
 ## Run the Project
 
-Run the plugin by using the Gradle [`runIde`](creating_plugin_project.md#running-a-plugin-with-the-runide-gradle-task) task.
+[Run](creating_plugin_project.md#running-the-plugin) the plugin.
 
 Create a <path>test.simple</path>  file with the following content:
 
