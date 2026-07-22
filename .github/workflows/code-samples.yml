@@ -51,8 +51,15 @@ jobs:
 
       - name: Build Plugin
         run: (cd code_samples/${{ matrix.plugin }}; ./gradlew buildPlugin)
+
+      # comparing_string_references_inspection fails due to NoClassDefFoundError from Vue plugin, so run without Vue
+      # delete this workaround when the Vue issue is fixed
       - name: Test Plugin
+        if: matrix.plugin != 'comparing_string_references_inspection'
         run: (cd code_samples/${{ matrix.plugin }}; ./gradlew test)
+      - name: Test Plugin
+        if: matrix.plugin == 'comparing_string_references_inspection'
+        run: (cd code_samples/${{ matrix.plugin }}; ./gradlew testWithoutVue)
 
       - name: Export Properties
         id: properties
